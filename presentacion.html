@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Nails Franquicias - Presentación</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: 
+                linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(26, 26, 46, 0.9)),
+                radial-gradient(circle at 20% 20%, rgba(147, 51, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(79, 172, 254, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            background-size: 400% 400%, 800px 800px, 600px 600px, 1000px 1000px, 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%, 0% 0%, 100% 100%, 50% 50%, 0% 50%; }
+            33% { background-position: 100% 50%, 100% 0%, 0% 100%, 0% 50%, 100% 50%; }
+            66% { background-position: 50% 100%, 50% 100%, 50% 0%, 100% 0%, 50% 100%; }
+            100% { background-position: 0% 50%, 0% 0%, 100% 100%, 50% 50%, 0% 50%; }
+        }
+
+        .presentation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slide {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+            animation: slideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .slide-content {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.95), rgba(109, 40, 217, 0.9));
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            padding: 80px 60px;
+            border-radius: 35px;
+            box-shadow: 
+                0 30px 100px rgba(147, 51, 234, 0.6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 80px rgba(147, 51, 234, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.05),
+                transparent
+            );
+            transform: skewX(-25deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) skewX(-25deg); }
+            100% { transform: translateX(100%) skewX(-25deg); }
+        }
+
+        .slide-title {
+            color: white;
+            font-size: 4.5em;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            font-feature-settings: 'liga' 1, 'kern' 1;
+            background: linear-gradient(135deg, #ffffff, #f8fafc, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.6em;
+            margin-bottom: 50px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            position: relative;
+            z-index: 2;
+            font-feature-settings: 'liga' 1;
+        }
+
+        .slide-text {
+            font-size: 1.3em;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            letter-spacing: -0.005em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(26, 26, 46, 0.9));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 24px;
+            margin: 40px 0;
+            font-size: 1.4em;
+            font-weight: 500;
+            box-shadow: 
+                0 20px 60px rgba(15, 15, 35, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 35px 25px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 
+                0 15px 40px rgba(15, 15, 35, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 25px 70px rgba(15, 15, 35, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #9333ea, #7c3aed, #a855f7);
+            opacity: 0.8;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: -0.005em;
+            line-height: 1.3;
+            margin-top: 8px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #ff6b9d;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 4em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+
+        .service-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-price {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #c44569;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .benefits-list {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            background: rgba(15, 15, 35, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 35px 30px;
+            margin: 25px 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 1.2em;
+            line-height: 1.7;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .benefit-item:hover {
+            transform: translateX(8px);
+            background: rgba(15, 15, 35, 0.9);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #9333ea, #7c3aed, #a855f7);
+        }
+
+        .benefit-title {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 1);
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            letter-spacing: -0.01em;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.9), rgba(147, 51, 234, 0.9));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5em;
+            color: white;
+            box-shadow: 
+                0 20px 60px rgba(79, 172, 254, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 40px rgba(147, 51, 234, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 18px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 
+                0 15px 40px rgba(31, 38, 135, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.9), rgba(109, 40, 217, 0.9));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(147, 51, 234, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .home-button:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 
+                0 15px 40px rgba(147, 51, 234, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #9333ea, #7c3aed, #a855f7);
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1001;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.9), rgba(109, 40, 217, 0.9));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 22px 45px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 
+                0 10px 40px rgba(147, 51, 234, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 20px 60px rgba(147, 51, 234, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .investment-item {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(40, 167, 69, 0.3);
+        }
+
+        .investment-amount {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .investment-label {
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 40px 25px;
+                margin: 0 10px;
+            }
+            
+            .slide-title {
+                font-size: 3em;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.3em;
+            }
+            
+            .slide-text {
+                font-size: 1.1em;
+            }
+            
+            .navigation {
+                bottom: 25px;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                padding: 15px 25px;
+                font-size: 0.95em;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                padding: 18px 35px;
+                font-size: 1.1em;
+            }
+
+                         .stats-grid {
+                 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                 gap: 20px;
+             }
+
+             .stat-item {
+                 padding: 25px 15px;
+             }
+
+             .stat-number {
+                 font-size: 2.2em;
+             }
+
+             .stat-label {
+                 font-size: 0.9em;
+             }
+
+            .logo {
+                width: 140px;
+                height: 140px;
+                font-size: 3.5em;
+            }
+
+            .slide-counter {
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+        }
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* WhatsApp Demo Styles */
+        .whatsapp-demo {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .phone-mockup {
+            width: 320px;
+            height: 680px;
+            background: #000;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-content {
+            width: 100%;
+            height: calc(100% - 20px);
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-header {
+            height: 30px;
+            background: #000;
+            border-radius: 22px 22px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .phone-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 20px;
+            color: white;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .phone-icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .whatsapp-header {
+            background: #075e54;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .contact-status {
+            font-size: 0.75em;
+            opacity: 0.8;
+        }
+
+        .whatsapp-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.1em;
+        }
+
+        .chat-container {
+            background: #e5ddd5;
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(147, 51, 234, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(79, 172, 254, 0.05) 0%, transparent 50%);
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-message {
+            align-items: flex-start;
+        }
+
+        .user-message {
+            align-items: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.9em;
+            line-height: 1.4;
+            position: relative;
+            animation: messageSlide 0.3s ease-out;
+        }
+
+        .ai-message .message-bubble {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-message .message-bubble {
+            background: #dcf8c6;
+            color: #333;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 0.7em;
+            color: #999;
+            margin-top: 4px;
+            padding: 0 8px;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-input-container {
+            background: #f0f0f0;
+            padding: 12px;
+            border-radius: 0 0 22px 22px;
+            flex-shrink: 0;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .message-input {
+            flex: 1;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 12px 16px;
+            font-size: 0.9em;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .message-input:focus {
+            border-color: #9333ea;
+            box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+        }
+
+        .send-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px rgba(147, 51, 234, 0.4);
+        }
+
+        .demo-suggestions {
+            text-align: center;
+        }
+
+        .suggestion-text {
+            font-size: 0.75em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .suggestion-chip {
+            background: rgba(147, 51, 234, 0.1);
+            color: #9333ea;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(147, 51, 234, 0.2);
+        }
+
+        .suggestion-chip:hover {
+            background: rgba(147, 51, 234, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .demo-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .info-item i {
+            color: #9333ea;
+            font-size: 1.2em;
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #999;
+            border-radius: 50%;
+            animation: typingAnimation 1.5s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="slide-counter" id="slideCounter">1 / 9</div>
+    
+    <!-- Botón para volver al inicio -->
+    <a href="index.html" class="home-button" title="Volver al inicio">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Portada -->
+        <div class="slide active">
+            <div class="slide-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+                <h1 class="slide-title">Agente de IA para tu Franquicia</h1>
+                <p class="slide-subtitle">Revoluciona tu Hello Nails con Inteligencia Artificial</p>
+                <div class="highlight-box">
+                    <strong>WhatsApp + Teléfono + IA = Más Clientes + Más Ingresos</strong><br>
+                    Presentación exclusiva para franquiciados Hello Nails
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Beneficios de Atención al Cliente -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Atención al Cliente 24/7</h1>
+                <p class="slide-subtitle">Tu salón nunca para de trabajar</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">🕐 Disponibilidad 24/7</div>
+                        El agente responde consultas, agenda citas y brinda información sobre servicios en cualquier momento, incluso cuando tu salón está cerrado. <strong>No pierdes clientes potenciales por horarios limitados.</strong>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">⚡ Respuesta Instantánea</div>
+                        Los clientes reciben respuestas inmediatas a preguntas frecuentes sobre precios, servicios disponibles, horarios, ubicación y políticas del salón. <strong>Experiencia del cliente significativamente mejorada.</strong>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>30% de las llamadas ocurren después de las 6 PM</strong><br>
+                    ¿Cuántos clientes estás perdiendo mientras duermes?
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Beneficios Operativos -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Eficiencia Operativa</h1>
+                <p class="slide-subtitle">Automatiza y optimiza tu salón</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">📅 Gestión Automatizada de Citas</div>
+                        El agente muestra disponibilidad en tiempo real, permite reservas automáticas y envía recordatorios. <strong>Reduce un 60% las cancelaciones de última hora.</strong>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">👥 Reducción de Carga de Trabajo</div>
+                        Tu personal se libera de tareas repetitivas como responder las mismas preguntas o gestionar reservas básicas. <strong>Ahorro de 3-4 horas diarias en tareas administrativas.</strong>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">💬 Gestión de Múltiples Conversaciones</div>
+                        Puede atender simultáneamente a varios clientes sin tiempos de espera. <strong>Algo imposible con atención humana tradicional.</strong>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>Elimina la necesidad de contratar recepcionista adicional</strong><br>
+                    Ahorro de €800-1200 mensuales
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Beneficios Comerciales -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Crecimiento de Ingresos</h1>
+                <p class="slide-subtitle">Más ventas, más rentabilidad</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">25-40%</span>
+                        <div class="stat-label">Aumento de Ingresos</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">€8-15</span>
+                        <div class="stat-label">Upselling por Cliente</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30%</span>
+                        <div class="stat-label">Clientes Fuera de Horario</div>
+                    </div>
+                </div>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">📈 Incremento en Conversiones</div>
+                        Al responder inmediatamente y facilitar el proceso de reserva, se reduce la pérdida de clientes que buscan alternativas cuando no reciben respuesta rápida.
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">💰 Upselling Automático</div>
+                        El agente sugiere servicios adicionales o promociones especiales basándose en las consultas del cliente, aumentando el ticket promedio.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Casos de Uso Específicos -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Consultas que Resuelve tu IA</h1>
+                <p class="slide-subtitle">Respuestas automáticas específicas para Hello Nails</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">"¿Cuánto dura el semipermanente?"</div>
+                        <strong>Respuesta automática:</strong> "2-3 semanas con los cuidados adecuados que te explicaremos"
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">"¿Puedo venir con uñas mordidas?"</div>
+                        <strong>Respuesta automática:</strong> "¡Por supuesto! Te explicamos nuestro proceso de reconstrucción"
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">"¿Qué incluye la manicura clásica?"</div>
+                        <strong>Respuesta automática:</strong> "Limado, cutículas, hidratación y esmalte tradicional"
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">"¿Tienen colores de temporada?"</div>
+                        <strong>Respuesta automática:</strong> "Sí, confirmo disponibilidad y te sugiero agendar para verlos"
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>Información actualizada automáticamente:</strong><br>
+                    Precios • Promociones • Horarios • Disponibilidad
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Gestión Inteligente de Agenda -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Gestión Inteligente de Agenda</h1>
+                <p class="slide-subtitle">Optimización automática para máxima rentabilidad</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">⏰ Tiempos Reales por Servicio</div>
+                        <strong>Manicura clásica:</strong> 45min • <strong>Semipermanente:</strong> 60min • <strong>Uñas esculpidas:</strong> 90min
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🎯 Detección de Espacios Libres</div>
+                        Detecta y ofrece automáticamente espacios libres por cancelaciones para maximizar la ocupación del salón
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🔄 Programación de Retoques</div>
+                        Programa automáticamente citas de retoque cada 2-3 semanas según el tipo de servicio realizado
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">70% → 90%</span>
+                        <div class="stat-label">Tasa de Ocupación</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">35%</span>
+                        <div class="stat-label">Más Clientes Repiten</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Ventajas Competitivas -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Tu Ventaja Competitiva</h1>
+                <p class="slide-subtitle">Mientras tu competencia pierde clientes, tú los capturas</p>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">🏆 Modernización del Negocio</div>
+                        Te posiciona como innovador y actualizado tecnológicamente, diferenciándote de competidores tradicionales
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">⭐ Experiencia de Cliente Premium</div>
+                        Ofreces un servicio más profesional y eficiente que justifica precios premium y fideliza clientela
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🎯 Consistencia en el Servicio</div>
+                        Garantizas que todos los clientes reciban la misma calidad de información, independientemente de quién esté trabajando
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>Mientras otros salones pierden clientes por no contestar,</strong><br>
+                    tu Hello Nails agenda 24/7 y mejora sus valoraciones online
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Implementación Obligatoria -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Implementación en Todas las Franquicias</h1>
+                <p class="slide-subtitle">Nueva tecnología obligatoria para mantener los estándares Hello Nails</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">25-40%</span>
+                        <div class="stat-label">Aumento Ingresos</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">€800-1200</span>
+                        <div class="stat-label">Ahorro Mensual</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">60%</span>
+                        <div class="stat-label">Menos Cancelaciones</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <div class="stat-label">Disponibilidad</div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong>A partir de enero, todas las franquicias Hello Nails</strong><br>
+                    contarán con su agente IA personalizado para mantener la excelencia en el servicio
+                </div>
+                <div class="benefits-list" style="max-width: 900px; margin: 40px auto 0;">
+                    <div class="benefit-item">
+                        <div class="benefit-title">📅 Cronograma de Implementación</div>
+                        Instalación progresiva durante enero en todas las ubicaciones de la red Hello Nails
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🎓 Formación Incluida</div>
+                        Capacitación completa para tu equipo sobre el uso y gestión del sistema IA
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🛠️ Soporte Técnico 24/7</div>
+                        Equipo dedicado para resolver cualquier consulta o incidencia técnica
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Demo Agente IA WhatsApp -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">Demo en Vivo: Agente IA WhatsApp</h1>
+                <p class="slide-subtitle">Experimenta cómo tu cliente interactúa con el agente IA de Hello Nails</p>
+                
+                <div class="whatsapp-demo">
+                                                <div class="phone-mockup">
+                                <div class="phone-content">
+                                    <div class="phone-header">
+                                        <div class="phone-status">
+                                            <span class="time">14:23</span>
+                                            <div class="phone-icons">
+                                                <i class="fas fa-signal"></i>
+                                                <i class="fas fa-wifi"></i>
+                                                <i class="fas fa-battery-full"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="whatsapp-header">
+                                        <div class="contact-info">
+                                            <div class="contact-avatar">
+                                                <i class="fas fa-spa"></i>
+                                            </div>
+                                            <div class="contact-details">
+                                                <div class="contact-name">Hello Nails IA</div>
+                                                <div class="contact-status">En línea</div>
+                                            </div>
+                                        </div>
+                                        <div class="whatsapp-icons">
+                                            <i class="fas fa-video"></i>
+                                            <i class="fas fa-phone"></i>
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="chat-container" id="chatContainer">
+                                        <!-- El chat comenzará cuando el cliente escriba -->
+                                    </div>
+                                    
+                                    <div class="chat-input-container">
+                                        <div class="chat-input-wrapper">
+                                            <input type="text" id="messageInput" placeholder="Escribe un mensaje..." class="message-input" onkeypress="handleKeyPress(event)">
+                                            <button onclick="sendMessage()" class="send-btn">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                        <div class="demo-suggestions">
+                                            <div class="suggestion-text">Prueba escribiendo:</div>
+                                            <div class="suggestions" id="suggestions">
+                                                <span class="suggestion-chip" onclick="fillMessage('Hola, buenas tardes')">Saludar</span>
+                                                <span class="suggestion-chip" onclick="fillMessage('Quiero reservar una cita')">Reservar</span>
+                                                <span class="suggestion-chip" onclick="fillMessage('¿Qué servicios tenéis?')">Servicios</span>
+                                                <span class="suggestion-chip" onclick="fillMessage('¿Cuánto cuesta?')">Precios</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                
+                <div class="demo-info">
+                    <div class="info-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Respuestas instantáneas 24/7</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Reservas automáticas</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Experiencia personalizada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i> Anterior
+        </button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+            Siguiente <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script>
+                 let currentSlide = 0;
+         const slides = document.querySelectorAll('.slide');
+         const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // Update indicators
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+            
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            if (direction === 1 && currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            } else if (direction === -1 && currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Generar partículas flotantes
+        function createParticles() {
+            const particlesContainer = document.querySelector('.floating-particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                // Diferentes tamaños de partículas
+                const size = 2 + Math.random() * 4;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Diferentes opacidades
+                particle.style.opacity = 0.1 + Math.random() * 0.3;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Efecto de cursor interactivo
+        function createCursorEffect() {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor-glow';
+            cursor.style.cssText = `
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                background: radial-gradient(circle, rgba(147, 51, 234, 0.6), transparent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s ease;
+            `;
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+        }
+
+        // WhatsApp Demo functionality
+        const aiResponses = {
+            // Saludos
+            greetings: {
+                keywords: ['hola', 'buenas', 'buenos días', 'buenas tardes', 'hey', 'hi'],
+                response: '¡Hola! 👋 Bienvenida a Hello Nails. Soy tu asistente IA y estoy aquí para ayudarte. ¿En qué puedo asistirte hoy? 💅✨'
+            },
+            // Reservas - Primera respuesta
+            booking: {
+                keywords: ['reservar', 'cita', 'appointment', 'reserva', 'disponibilidad', 'libre', 'mañana', 'hoy'],
+                response: '¡Perfecto! 📅 Te ayudo a reservar tu cita.\n\nPrimero, ¿qué servicio te gustaría?\n💅 Manicura clásica - 25€\n✨ Manicura gel - 35€\n🎨 Nail art - 45€\n🦶 Pedicura - 30€\n\nEscribe el servicio que prefieres 😊'
+            },
+            // Servicios específicos para reservas
+            service_selection: {
+                keywords: ['manicura clásica', 'manicura gel', 'nail art', 'pedicura', 'clásica', 'gel'],
+                response: '¡Excelente elección! ✨\n\nAhora necesito algunos datos:\n📅 ¿Qué día prefieres?\n🕐 ¿Qué hora te viene mejor?\n\nTenemos disponibilidad:\n• Lunes a Viernes: 10:00-20:00\n• Sábados: 10:00-18:00\n\n¿Qué día y hora prefieres?'
+            },
+            // Confirmación con datos específicos
+            booking_details: {
+                keywords: ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'mañana', '10:', '11:', '12:', '13:', '14:', '15:', '16:', '17:', '18:', '19:', '20:'],
+                response: '¡Perfecto! 🎉\n\nResumen de tu cita:\n📅 Día: [día seleccionado]\n🕐 Hora: [hora seleccionada]\n💅 Servicio: [servicio elegido]\n\nPara confirmar necesito:\n👤 Tu nombre\n📱 Tu teléfono\n\n¿Podrías proporcionarme estos datos?'
+            },
+            // Servicios
+            services: {
+                keywords: ['servicios', 'qué hacéis', 'tratamientos', 'ofrecéis', 'tenéis', 'tipos'],
+                response: '¡Tenemos servicios increíbles! 💅✨\n\n🌟 **Nuestros servicios:**\n• Manicura clásica\n• Manicura gel/semipermanente\n• Pedicura spa completa\n• Nail art personalizado\n• Tratamientos de uñas\n• Extensiones de uñas\n• Diseños especiales\n\n¿Te interesa alguno en particular?'
+            },
+            // Precios
+            prices: {
+                keywords: ['precio', 'cuesta', 'coste', 'tarifa', 'cuánto', '€', 'euros'],
+                response: '💰 **Nuestros precios:**\n\n💅 Manicura clásica: 25€\n✨ Manicura gel: 35€\n🎨 Nail art: desde 45€\n🦶 Pedicura completa: 30€\n💎 Extensiones: 50€\n\n¡Ofrecemos la mejor calidad-precio! ¿Te gustaría reservar algún servicio?'
+            },
+            // Horarios
+            schedule: {
+                keywords: ['horario', 'abierto', 'cerrado', 'hora', 'cuando', 'abrís'],
+                response: '🕐 **Nuestros horarios:**\n\nLunes a Viernes: 10:00 - 20:00\nSábados: 10:00 - 18:00\nDomingos: Cerrado\n\n¿Te va bien alguno de estos horarios para tu cita?'
+            },
+            // Ubicación
+            location: {
+                keywords: ['dónde', 'ubicación', 'dirección', 'estáis', 'encontrar'],
+                response: '📍 **Nuestra ubicación:**\n\nCalle Example, 123\nMadrid, 28001\n\n¡Estamos en el centro de la ciudad! ¿Necesitas indicaciones para llegar?'
+            },
+            // Default
+            default: {
+                keywords: [],
+                response: '¡Gracias por tu mensaje! 😊 \n\nPuedo ayudarte con:\n📅 Reservar una cita\n💅 Información sobre servicios\n💰 Consultar precios\n🕐 Horarios\n📍 Ubicación\n\n¿En qué te puedo ayudar?'
+            }
+        };
+
+        let conversationState = 'initial'; // initial, booking_started, service_selected, day_selected, time_requested
+        let selectedService = '';
+        let selectedDay = '';
+        let selectedTime = '';
+
+        function getAIResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Contexto de conversación para reservas
+            if (conversationState === 'booking_started') {
+                // Si menciona un servicio específico
+                for (const keyword of aiResponses.service_selection.keywords) {
+                    if (lowerMessage.includes(keyword)) {
+                        selectedService = extractService(lowerMessage);
+                        conversationState = 'service_selected';
+                        return '¡Excelente elección! ✨ Has elegido: ' + selectedService + '\n\nAhora dime, ¿qué día prefieres?\n\nTenemos disponibilidad:\n📅 Lunes a Viernes: 10:00-20:00\n📅 Sábados: 10:00-18:00\n\nPuedes decirme el día que mejor te venga 😊';
+                    }
+                }
+            }
+            
+            if (conversationState === 'service_selected') {
+                // Si menciona un día
+                const dayKeywords = ['lunes', 'martes', 'miércoles', 'miercoles', 'jueves', 'viernes', 'sábado', 'sabado', 'mañana'];
+                for (const keyword of dayKeywords) {
+                    if (lowerMessage.includes(keyword)) {
+                        selectedDay = extractDay(lowerMessage);
+                        conversationState = 'day_selected';
+                        return '¡Perfecto! 📅 ' + selectedDay + ' es una buena opción.\n\nAhora necesito saber la hora. ¿Qué hora te viene mejor?\n\n🕐 Horarios disponibles:\n• Mañanas: 10:00, 11:00, 12:00\n• Tardes: 15:00, 16:00, 17:00, 18:00\n• (Sábados hasta las 18:00)\n\nDime la hora que prefieres 😊';
+                    }
+                }
+            }
+            
+            if (conversationState === 'day_selected') {
+                // Si menciona una hora
+                const timeKeywords = ['10:', '11:', '12:', '13:', '14:', '15:', '16:', '17:', '18:', '19:', '20:', '10', '11', '12', '15', '16', '17', '18', 'mañana', 'tarde'];
+                for (const keyword of timeKeywords) {
+                    if (lowerMessage.includes(keyword)) {
+                        selectedTime = extractTime(lowerMessage);
+                        conversationState = 'time_requested';
+                        const servicePrice = getServicePrice(selectedService);
+                        return '¡Perfecto! 🎉\n\n✅ **Resumen de tu cita:**\n📅 Día: ' + selectedDay + '\n🕐 Hora: ' + selectedTime + '\n💅 Servicio: ' + selectedService + '\n💰 Precio: ' + servicePrice + '\n\nPara confirmar tu reserva necesito:\n👤 Tu nombre completo\n📱 Tu número de teléfono\n\n¿Podrías proporcionarme estos datos?';
+                    }
+                }
+            }
+            
+            // Respuestas generales
+            for (const [category, data] of Object.entries(aiResponses)) {
+                if (category === 'default' || category === 'service_selection' || category === 'booking_details') continue;
+                
+                for (const keyword of data.keywords) {
+                    if (lowerMessage.includes(keyword)) {
+                        if (category === 'booking') {
+                            conversationState = 'booking_started';
+                        }
+                        return data.response;
+                    }
+                }
+            }
+            
+            return aiResponses.default.response;
+        }
+
+        function extractService(message) {
+            if (message.includes('manicura clásica') || message.includes('manicura clasica') || message.includes('clásica') || message.includes('clasica')) return 'Manicura clásica';
+            if (message.includes('manicura gel') || message.includes('gel')) return 'Manicura gel';
+            if (message.includes('nail art') || message.includes('art')) return 'Nail art';
+            if (message.includes('pedicura')) return 'Pedicura';
+            return 'Servicio seleccionado';
+        }
+
+        function getServicePrice(service) {
+            if (service.includes('Manicura clásica')) return '25€';
+            if (service.includes('Manicura gel')) return '35€';
+            if (service.includes('Nail art')) return '45€';
+            if (service.includes('Pedicura')) return '30€';
+            return '25€';
+        }
+
+        function extractDay(message) {
+            if (message.includes('lunes')) return 'Lunes';
+            if (message.includes('martes')) return 'Martes';
+            if (message.includes('miércoles') || message.includes('miercoles')) return 'Miércoles';
+            if (message.includes('jueves')) return 'Jueves';
+            if (message.includes('viernes')) return 'Viernes';
+            if (message.includes('sábado') || message.includes('sabado')) return 'Sábado';
+            if (message.includes('mañana')) return 'Mañana';
+            return 'el día solicitado';
+        }
+
+        function extractTime(message) {
+            const timeMatch = message.match(/\d{1,2}:\d{2}/);
+            if (timeMatch) return timeMatch[0];
+            if (message.includes('10')) return '10:00';
+            if (message.includes('11')) return '11:00';
+            if (message.includes('12')) return '12:00';
+            if (message.includes('15')) return '15:00';
+            if (message.includes('16')) return '16:00';
+            if (message.includes('17')) return '17:00';
+            if (message.includes('18')) return '18:00';
+            if (message.includes('mañana')) return '11:00';
+            if (message.includes('tarde')) return '16:00';
+            return 'la hora solicitada';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            sendDemoMessage(message);
+            input.value = '';
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function fillMessage(text) {
+            document.getElementById('messageInput').value = text;
+        }
+
+        function updateSuggestions() {
+            const suggestionsContainer = document.getElementById('suggestions');
+            let suggestions = [];
+            
+            switch(conversationState) {
+                case 'initial':
+                    suggestions = [
+                        { text: 'Saludar', message: 'Hola, buenas tardes' },
+                        { text: 'Reservar', message: 'Quiero reservar una cita' },
+                        { text: 'Servicios', message: '¿Qué servicios tenéis?' },
+                        { text: 'Precios', message: '¿Cuánto cuesta?' }
+                    ];
+                    break;
+                case 'booking_started':
+                    suggestions = [
+                        { text: 'Manicura clásica', message: 'Manicura clásica' },
+                        { text: 'Manicura gel', message: 'Manicura gel' },
+                        { text: 'Nail art', message: 'Nail art' },
+                        { text: 'Pedicura', message: 'Pedicura' }
+                    ];
+                    break;
+                case 'service_selected':
+                    suggestions = [
+                        { text: 'Lunes', message: 'Lunes' },
+                        { text: 'Martes', message: 'Martes' },
+                        { text: 'Viernes', message: 'Viernes' },
+                        { text: 'Sábado', message: 'Sábado' }
+                    ];
+                    break;
+                case 'day_selected':
+                    suggestions = [
+                        { text: '10:00', message: '10:00' },
+                        { text: '11:00', message: '11:00' },
+                        { text: '16:00', message: '16:00' },
+                        { text: '17:00', message: '17:00' }
+                    ];
+                    break;
+                default:
+                    suggestions = [
+                        { text: 'Saludar', message: 'Hola, buenas tardes' },
+                        { text: 'Reservar', message: 'Quiero reservar una cita' },
+                        { text: 'Servicios', message: '¿Qué servicios tenéis?' },
+                        { text: 'Precios', message: '¿Cuánto cuesta?' }
+                    ];
+            }
+            
+            suggestionsContainer.innerHTML = suggestions.map(s => 
+                `<span class="suggestion-chip" onclick="fillMessage('${s.message}')">${s.text}</span>`
+            ).join('');
+        }
+
+        function sendDemoMessage(message) {
+            const chatContainer = document.getElementById('chatContainer');
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = `
+                <div class="message-bubble">${message}</div>
+                <div class="message-time">14:21</div>
+            `;
+            chatContainer.appendChild(userMessage);
+            
+            // Show typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'message ai-message typing-message';
+            typingIndicator.innerHTML = `
+                <div class="message-bubble typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatContainer.appendChild(typingIndicator);
+            
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            // Remove typing indicator and add AI response after delay
+            setTimeout(() => {
+                chatContainer.removeChild(typingIndicator);
+                
+                const response = getAIResponse(message);
+                const currentTime = new Date().toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'});
+                
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message ai-message';
+                aiMessage.innerHTML = `
+                    <div class="message-bubble">${response.replace(/\n/g, '<br>')}</div>
+                    <div class="message-time">${currentTime}</div>
+                `;
+                chatContainer.appendChild(aiMessage);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+                
+                // Actualizar sugerencias después de la respuesta
+                updateSuggestions();
+            }, 1500);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            createCursorEffect();
+            showSlide(0);
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next slide
+                    changeSlide(1);
+                } else {
+                    // Swipe right - previous slide
+                    changeSlide(-1);
+                }
+            }
+        }
+    </script>
+</body>
+</html> 

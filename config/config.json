@@ -1,0 +1,82 @@
+{
+  "site": {
+    "name": "Hello Nails Franquicias",
+    "description": "Red de franquicias de salones de belleza especializados en uñas",
+    "url": "https://hellonails.es",
+    "email": "info@hellonails.es",
+    "phone": "+34 900 123 456",
+    "address": "Calle Principal 123, Madrid, España"
+  },
+  "social": {
+    "facebook": "https://facebook.com/hellonails",
+    "instagram": "https://instagram.com/hellonails",
+    "twitter": "https://twitter.com/hellonails",
+    "youtube": "https://youtube.com/hellonails",
+    "tiktok": "https://tiktok.com/@hellonails"
+  },
+  "services": {
+    "manicura_clasica": {
+      "name": "Manicura Clásica",
+      "price": 15,
+      "duration": 45,
+      "description": "Limado, cutículas, hidratación y esmalte tradicional"
+    },
+    "semipermanente": {
+      "name": "Esmaltado Semipermanente",
+      "price": 25,
+      "duration": 60,
+      "description": "Esmaltado de larga duración (2-3 semanas)"
+    },
+    "unas_esculpidas": {
+      "name": "Uñas Esculpidas",
+      "price_min": 35,
+      "price_max": 45,
+      "duration": 90,
+      "description": "Extensión y modelado de uñas con gel o acrílico"
+    },
+    "pedicura": {
+      "name": "Pedicura Completa",
+      "price": 20,
+      "duration": 60,
+      "description": "Cuidado completo de pies y uñas"
+    }
+  },
+  "promotions": {
+    "martes_descuento": {
+      "name": "Martes de Descuento",
+      "discount": 20,
+      "description": "20% de descuento todos los martes"
+    },
+    "pack_3_sesiones": {
+      "name": "Pack 3 Sesiones",
+      "discount": 15,
+      "description": "15% de descuento en pack de 3 sesiones"
+    }
+  },
+  "business_hours": {
+    "monday": "09:00-20:00",
+    "tuesday": "09:00-20:00",
+    "wednesday": "09:00-20:00",
+    "thursday": "09:00-20:00",
+    "friday": "09:00-21:00",
+    "saturday": "10:00-19:00",
+    "sunday": "Cerrado"
+  },
+  "franchise": {
+    "investment_min": 25000,
+    "investment_max": 50000,
+    "franchise_fee": 15000,
+    "royalty_percentage": 5,
+    "marketing_fee": 2
+  },
+  "ai_agent": {
+    "enabled": true,
+    "features": [
+      "Reservas automáticas",
+      "Consultas 24/7",
+      "Información de servicios",
+      "Recordatorios de citas",
+      "Upselling automático"
+    ]
+  }
+} 
