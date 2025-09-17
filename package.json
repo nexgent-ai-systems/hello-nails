@@ -1,75 +1,33 @@
 {
   "name": "hello-nails-franquicias",
   "version": "1.0.0",
-  "description": "Sitio web oficial de Hello Nails Franquicias - Salones de belleza especializados en uñas",
+  "description": "Presentación interactiva Hello Nails Franquicias - Agente IA Naia",
   "main": "index.html",
   "scripts": {
-    "start": "live-server --port=3000",
-    "build": "npm run build-css && npm run minify-js",
-    "build-css": "sass src/styles/main.scss assets/css/main.css --style compressed",
-    "build-js": "webpack --mode production",
-    "dev": "concurrently \"sass --watch src/styles:assets/css\" \"live-server --port=3000\"",
-    "lint": "eslint src/scripts/**/*.js",
-    "format": "prettier --write \"**/*.{html,css,js,json}\"",
-    "optimize-images": "imagemin assets/images/**/* --out-dir=dist/images",
-    "deploy": "npm run build && gh-pages -d dist"
+    "start": "live-server --port=8000",
+    "build": "echo 'Build completed - Static HTML project'",
+    "dev": "live-server --port=8000",
+    "lint": "echo 'Linting skipped for static project'",
+    "format": "echo 'Formatting skipped for static project'",
+    "deploy": "echo 'Deploy ready - Static HTML project'"
   },
   "keywords": [
     "hello-nails",
     "franquicias",
-    "uñas",
-    "belleza",
-    "salón",
-    "manicura",
-    "pedicura",
-    "nail-art",
-    "semipermanente",
-    "gel"
+    "naia",
+    "agente-ia",
+    "whatsapp",
+    "presentacion",
+    "nexgent"
   ],
-  "author": "Hello Nails Franquicias",
+  "author": "Nexgent AI Systems",
   "license": "MIT",
-  "homepage": "https://hellonails.es",
+  "homepage": "https://github.com/nexgent-ai-systems/hello-nails",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hellonails/franquicias-web.git"
+    "url": "https://github.com/nexgent-ai-systems/hello-nails.git"
   },
-  "devDependencies": {
-    "@babel/core": "^7.22.0",
-    "@babel/preset-env": "^7.22.0",
-    "autoprefixer": "^10.4.0",
-    "babel-loader": "^9.1.0",
-    "concurrently": "^8.2.0",
-    "css-loader": "^6.8.0",
-    "eslint": "^8.44.0",
-    "gh-pages": "^5.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "imagemin": "^8.0.1",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "live-server": "^1.2.2",
-    "mini-css-extract-plugin": "^2.7.0",
-    "postcss": "^8.4.0",
-    "postcss-loader": "^7.3.0",
-    "prettier": "^3.0.0",
-    "sass": "^1.63.0",
-    "webpack": "^5.88.0",
-    "webpack-cli": "^5.1.0"
-  },
-  "dependencies": {
-    "aos": "^2.3.4",
-    "bootstrap": "^5.3.0",
-    "jquery": "^3.7.0",
-    "swiper": "^10.0.0",
-    "typed.js": "^2.0.16",
-    "vanilla-lazyload": "^17.8.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=16.0.0"
   }
 } 
