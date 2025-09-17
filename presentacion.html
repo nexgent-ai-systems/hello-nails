@@ -808,6 +808,7 @@
             line-height: 1.4;
             position: relative;
             animation: messageSlide 0.3s ease-out;
+            text-align: left;
         }
 
         .ai-message .message-bubble {
@@ -1225,8 +1226,8 @@
         <!-- Slide 9: Demo Agente IA WhatsApp -->
         <div class="slide">
             <div class="slide-content">
-                <h1 class="slide-title">Demo en Vivo: Agente IA WhatsApp</h1>
-                <p class="slide-subtitle">Experimenta cómo tu cliente interactúa con el agente IA de Hello Nails</p>
+                                        <h1 class="slide-title">Demo en Vivo: Naia en WhatsApp</h1>
+                        <p class="slide-subtitle">Experimenta cómo tu cliente interactúa con Naia, el agente IA de Hello Nails</p>
                 
                 <div class="whatsapp-demo">
                                                 <div class="phone-mockup">
@@ -1247,10 +1248,10 @@
                                             <div class="contact-avatar">
                                                 <i class="fas fa-spa"></i>
                                             </div>
-                                            <div class="contact-details">
-                                                <div class="contact-name">Hello Nails IA</div>
-                                                <div class="contact-status">En línea</div>
-                                            </div>
+                                                                                    <div class="contact-details">
+                                            <div class="contact-name">Naia - Hello Nails</div>
+                                            <div class="contact-status">En línea</div>
+                                        </div>
                                         </div>
                                         <div class="whatsapp-icons">
                                             <i class="fas fa-video"></i>
@@ -1396,10 +1397,10 @@
         // WhatsApp Demo functionality
         const aiResponses = {
             // Saludos
-            greetings: {
-                keywords: ['hola', 'buenas', 'buenos días', 'buenas tardes', 'hey', 'hi'],
-                response: '¡Hola! 👋 Bienvenida a Hello Nails. Soy tu asistente IA y estoy aquí para ayudarte. ¿En qué puedo asistirte hoy? 💅✨'
-            },
+                                greetings: {
+                        keywords: ['hola', 'buenas', 'buenos días', 'buenas tardes', 'hey', 'hi'],
+                        response: '¡Hola! 👋 Soy Naia, tu asistente de Hello Nails. Estoy aquí para ayudarte con todo lo que necesites. ¿En qué puedo asistirte hoy? 💅✨'
+                    },
             // Reservas - Primera respuesta
             booking: {
                 keywords: ['reservar', 'cita', 'appointment', 'reserva', 'disponibilidad', 'libre', 'mañana', 'hoy'],
@@ -1436,10 +1437,10 @@
                 response: '📍 **Nuestra ubicación:**\n\nCalle Example, 123\nMadrid, 28001\n\n¡Estamos en el centro de la ciudad! ¿Necesitas indicaciones para llegar?'
             },
             // Default
-            default: {
-                keywords: [],
-                response: '¡Gracias por tu mensaje! 😊 \n\nPuedo ayudarte con:\n📅 Reservar una cita\n💅 Información sobre servicios\n💰 Consultar precios\n🕐 Horarios\n📍 Ubicación\n\n¿En qué te puedo ayudar?'
-            }
+                                default: {
+                        keywords: [],
+                        response: '¡Gracias por tu mensaje! 😊 Soy Naia y puedo ayudarte con:\n📅 Reservar una cita\n💅 Información sobre servicios\n💰 Consultar precios\n🕐 Horarios\n📍 Ubicación\n\n¿En qué te puedo ayudar?'
+                    }
         };
 
         let conversationState = 'initial'; // initial, booking_started, service_selected, day_selected, time_requested
