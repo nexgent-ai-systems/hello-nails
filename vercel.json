@@ -1,0 +1,12 @@
+{
+  "buildCommand": "echo 'Build completed - Static HTML project'",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+} 
