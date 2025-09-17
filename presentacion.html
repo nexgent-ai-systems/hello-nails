@@ -567,78 +567,265 @@
             font-weight: 500;
         }
 
-        @media (max-width: 768px) {
+                @media (max-width: 768px) {
+            .presentation-container {
+                padding: 10px;
+            }
             .slide-content {
-                padding: 40px 25px;
+                padding: 35px 25px;
                 margin: 0 10px;
+                border-radius: 25px;
             }
-            
             .slide-title {
-                font-size: 3em;
+                font-size: 2.8em;
+                margin-bottom: 20px;
+                line-height: 1.1;
             }
-            
             .slide-subtitle {
                 font-size: 1.3em;
+                margin-bottom: 25px;
+                line-height: 1.4;
             }
-            
             .slide-text {
                 font-size: 1.1em;
+                line-height: 1.5;
             }
-            
+            .benefits-list {
+                gap: 20px;
+            }
+            .benefit-item {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            .benefit-title {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            .stat-item {
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+            .stat-number {
+                font-size: 2.2em;
+                margin-bottom: 8px;
+            }
+            .stat-label {
+                font-size: 0.9em;
+            }
+            .highlight-box {
+                padding: 20px 25px;
+                margin: 25px auto;
+                font-size: 1em;
+                border-radius: 20px;
+            }
+            .logo {
+                width: 120px;
+                height: 120px;
+                font-size: 3em;
+                margin-bottom: 25px;
+            }
+            .naia-intro div[style*="width: 120px"] {
+                width: 80px !important;
+                height: 80px !important;
+                font-size: 1.8em !important;
+            }
+            .naia-intro h3 {
+                font-size: 1.3em !important;
+            }
+            .naia-intro p {
+                font-size: 1em !important;
+                padding: 0 10px !important;
+            }
             .navigation {
                 bottom: 25px;
                 gap: 15px;
             }
-            
             .nav-btn {
-                padding: 15px 25px;
-                font-size: 0.95em;
+                padding: 12px 20px;
+                font-size: 0.9em;
             }
-            
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
-            
             .cta-btn {
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
-                padding: 18px 35px;
-                font-size: 1.1em;
+                padding: 16px 30px;
+                font-size: 1em;
             }
-
-                         .stats-grid {
-                 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                 gap: 20px;
-             }
-
-             .stat-item {
-                 padding: 25px 15px;
-             }
-
-             .stat-number {
-                 font-size: 2.2em;
-             }
-
-             .stat-label {
-                 font-size: 0.9em;
-             }
-
-            .logo {
-                width: 140px;
-                height: 140px;
-                font-size: 3.5em;
+            .progress-bar {
+                height: 3px;
             }
-
             .slide-counter {
-                top: 20px;
-                right: 20px;
-                padding: 12px 20px;
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+            .home-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2em;
+            }
+            .phone-mockup {
+                width: 280px;
+                height: 580px;
+            }
+            .chat-container {
+                height: 360px;
+            }
+            .whatsapp-demo {
+                align-items: center;
+            }
+            .demo-info {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+            }
+            .info-item {
                 font-size: 0.9em;
             }
         }
+
+        @media (max-width: 480px) {
+            .presentation-container {
+                padding: 5px;
+            }
+            .slide-content {
+                padding: 25px 20px;
+                margin: 0 5px;
+                border-radius: 20px;
+            }
+            .slide-title {
+                font-size: 2.2em;
+                margin-bottom: 15px;
+                line-height: 1.2;
+            }
+            .slide-subtitle {
+                font-size: 1.1em;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+            .slide-text {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+            .benefits-list {
+                gap: 15px;
+            }
+            .benefit-item {
+                padding: 15px;
+                border-radius: 12px;
+            }
+            .benefit-title {
+                font-size: 1.1em;
+                margin-bottom: 8px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .stat-item {
+                padding: 15px 12px;
+                border-radius: 12px;
+            }
+            .stat-number {
+                font-size: 1.8em;
+                margin-bottom: 5px;
+            }
+            .stat-label {
+                font-size: 0.85em;
+            }
+            .highlight-box {
+                padding: 15px 20px;
+                margin: 20px auto;
+                font-size: 0.95em;
+                border-radius: 15px;
+            }
+            .logo {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5em;
+                margin-bottom: 20px;
+            }
+            .naia-intro div[style*="width: 120px"] {
+                width: 70px !important;
+                height: 70px !important;
+                font-size: 1.5em !important;
+            }
+            .naia-intro h3 {
+                font-size: 1.2em !important;
+                margin-bottom: 10px !important;
+            }
+            .naia-intro p {
+                font-size: 0.95em !important;
+                line-height: 1.5 !important;
+                padding: 0 5px !important;
+            }
+            .navigation {
+                bottom: 20px;
+                gap: 10px;
+            }
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.8em;
+            }
+            .cta-btn {
+                padding: 14px 25px;
+                font-size: 0.95em;
+            }
+            .slide-counter {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+            .home-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1em;
+            }
+            .phone-mockup {
+                width: 260px;
+                height: 520px;
+            }
+            .chat-container {
+                height: 320px;
+            }
+            .whatsapp-header {
+                padding: 10px 12px;
+            }
+            .contact-name {
+                font-size: 0.9em;
+            }
+            .contact-status {
+                font-size: 0.7em;
+            }
+            .message-input {
+                padding: 10px 14px;
+                font-size: 0.85em;
+            }
+            .send-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8em;
+            }
+            .suggestion-chip {
+                padding: 5px 10px;
+                font-size: 0.7em;
+            }
+            .demo-info {
+                gap: 10px;
+                margin-top: 15px;
+            }
+            .info-item {
+                font-size: 0.8em;
+            }
+        }
+
         .floating-particles {
             position: fixed;
             top: 0;
