@@ -374,24 +374,34 @@
                 line-height: 1.4;
             }
             .logos-container {
-                height: 300px;
+                height: 400px;
                 margin: 15px auto 20px auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
             }
             .hello-nails-logo {
-                left: 50%;
+                position: static;
+                transform: none;
                 width: 200px;
                 height: 140px;
-                transform: translateX(-220px);
-            }
-            .nexgent-logo {
-                right: 50%;
-                width: 200px;
-                height: 140px;
-                transform: translateX(220px);
+                order: 1;
             }
             .collaboration-symbol {
+                position: static;
+                transform: none;
                 width: 70px;
                 height: 70px;
+                order: 2;
+            }
+            .nexgent-logo {
+                position: static;
+                transform: none;
+                width: 200px;
+                height: 140px;
+                order: 3;
             }
             .handshake-icon {
                 width: 30px;
@@ -419,33 +429,22 @@
         }
 
                 @media (max-width: 768px) {
-            @keyframes floatLeft {
-                0%, 100% { 
-                    transform: translateX(-220px) translateY(0px) rotate(-2deg) rotateY(5deg); 
-                }
-                25% { 
-                    transform: translateX(-220px) translateY(-15px) rotate(1deg) rotateY(-2deg); 
-                }
-                50% { 
-                    transform: translateX(-220px) translateY(-8px) rotate(2deg) rotateY(8deg); 
-                }
-                75% { 
-                    transform: translateX(-220px) translateY(-18px) rotate(-1deg) rotateY(-5deg); 
-                }
+            .hello-nails-logo, .nexgent-logo {
+                animation: floatVertical 6s ease-in-out infinite;
             }
 
-            @keyframes floatRight {
+            @keyframes floatVertical {
                 0%, 100% { 
-                    transform: translateX(220px) translateY(0px) rotate(2deg) rotateY(-5deg); 
+                    transform: translateY(0px) rotate(-1deg) scale(1); 
                 }
                 25% { 
-                    transform: translateX(220px) translateY(-12px) rotate(-1deg) rotateY(8deg); 
+                    transform: translateY(-8px) rotate(1deg) scale(1.02); 
                 }
                 50% { 
-                    transform: translateX(220px) translateY(-20px) rotate(-2deg) rotateY(-8deg); 
+                    transform: translateY(-4px) rotate(0deg) scale(1.01); 
                 }
                 75% { 
-                    transform: translateX(220px) translateY(-8px) rotate(1deg) rotateY(5deg); 
+                    transform: translateY(-12px) rotate(-0.5deg) scale(1.02); 
                 }
             }
         }
@@ -473,22 +472,34 @@
                 padding: 0 5px;
             }
             .logos-container {
-                height: 250px;
+                height: 350px;
                 margin: 10px auto 15px auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 25px;
             }
             .hello-nails-logo {
+                position: static;
+                transform: none;
                 width: 160px;
                 height: 110px;
-                transform: translateX(-170px);
-            }
-            .nexgent-logo {
-                width: 160px;
-                height: 110px;
-                transform: translateX(170px);
+                order: 1;
             }
             .collaboration-symbol {
+                position: static;
+                transform: none;
                 width: 55px;
                 height: 55px;
+                order: 2;
+            }
+            .nexgent-logo {
+                position: static;
+                transform: none;
+                width: 160px;
+                height: 110px;
+                order: 3;
             }
             .handshake-icon {
                 width: 24px;
@@ -512,33 +523,22 @@
         }
 
         @media (max-width: 480px) {
-            @keyframes floatLeft {
-                0%, 100% { 
-                    transform: translateX(-170px) translateY(0px) rotate(-1deg) rotateY(3deg); 
-                }
-                25% { 
-                    transform: translateX(-170px) translateY(-10px) rotate(1deg) rotateY(-1deg); 
-                }
-                50% { 
-                    transform: translateX(-170px) translateY(-5px) rotate(1deg) rotateY(5deg); 
-                }
-                75% { 
-                    transform: translateX(-170px) translateY(-12px) rotate(-1deg) rotateY(-3deg); 
-                }
+            .hello-nails-logo, .nexgent-logo {
+                animation: floatVerticalSmall 5s ease-in-out infinite;
             }
 
-            @keyframes floatRight {
+            @keyframes floatVerticalSmall {
                 0%, 100% { 
-                    transform: translateX(170px) translateY(0px) rotate(1deg) rotateY(-3deg); 
+                    transform: translateY(0px) rotate(-0.5deg) scale(1); 
                 }
                 25% { 
-                    transform: translateX(170px) translateY(-8px) rotate(-1deg) rotateY(5deg); 
+                    transform: translateY(-6px) rotate(0.5deg) scale(1.01); 
                 }
                 50% { 
-                    transform: translateX(170px) translateY(-15px) rotate(-1deg) rotateY(-5deg); 
+                    transform: translateY(-3px) rotate(0deg) scale(1.005); 
                 }
                 75% { 
-                    transform: translateX(170px) translateY(-5px) rotate(1deg) rotateY(3deg); 
+                    transform: translateY(-9px) rotate(-0.3deg) scale(1.01); 
                 }
             }
         }
