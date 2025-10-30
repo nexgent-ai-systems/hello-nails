@@ -7,6 +7,28 @@
     "phone": "+34 900 123 456",
     "address": "Calle Principal 123, Madrid, España"
   },
+  "branding": {
+    "colors": {
+      "primary": "#AD9978",
+      "secondary": "#FFFFFF",
+      "accent": "#8B7958",
+      "light": "#C4AF8D",
+      "background": "#F5F0E8"
+    },
+    "fonts": {
+      "primary": "Montserrat",
+      "secondary": "Bodoni Moda",
+      "weights": {
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700,
+        "extrabold": 800,
+        "black": 900
+      }
+    }
+  },
   "social": {
     "facebook": "https://facebook.com/hellonails",
     "instagram": "https://instagram.com/hellonails",

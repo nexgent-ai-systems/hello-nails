@@ -1,7 +1,7 @@
 {
   "name": "hello-nails-franquicias",
   "version": "1.0.0",
-  "description": "Hello Nails Franquicias - Presentación Interactiva con Agente IA",
+  "description": "Presentación interactiva Hello Nails Franquicias - Agente IA Naia",
   "main": "index.html",
   "scripts": {
     "start": "live-server --port=8000",
@@ -18,14 +18,14 @@
     "agente-ia",
     "whatsapp",
     "presentacion",
-    "belleza"
+    "nexgent"
   ],
-  "author": "Hello Nails",
+  "author": "Nexgent AI Systems",
   "license": "MIT",
-  "homepage": "https://hellonails.es",
+  "homepage": "https://github.com/nexgent-ai-systems/hello-nails",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hello-nails/franquicias.git"
+    "url": "https://github.com/nexgent-ai-systems/hello-nails.git"
   },
   "engines": {
     "node": ">=16.0.0"

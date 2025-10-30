@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agente IA para Hello Nails - Presentación Franquiciados</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,8 +14,8 @@
         }
 
         body {
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #FFFFFF, #F5F5F5, #FAFAFA);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F0E8 25%, #E8DCC8 50%, #D4C4A8 75%, #AD9978 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -64,22 +63,28 @@
         }
 
         h1 {
-            color: #C4B29A;
+            color: #AD9978;
+            font-family: 'Bodoni Moda', serif;
             font-size: 3em;
+            font-weight: 700;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(173, 153, 120, 0.2);
         }
 
         h2 {
-            color: #C4B29A;
+            color: #AD9978;
+            font-family: 'Bodoni Moda', serif;
             font-size: 2.5em;
+            font-weight: 700;
             margin-bottom: 30px;
             text-align: center;
         }
 
         h3 {
             color: #AD9978;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8em;
+            font-weight: 600;
             margin-bottom: 20px;
         }
 
@@ -101,7 +106,7 @@
             background: linear-gradient(135deg, #fff, #f8f9fa);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(173, 153, 120, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-left: 5px solid #AD9978;
         }
@@ -125,12 +130,12 @@
         }
 
         .metric-card {
-            background: linear-gradient(135deg, #AD9978, #C4B29A);
+            background: linear-gradient(135deg, #AD9978, #8B7958);
             color: white;
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 10px 30px rgba(173, 153, 120, 0.3);
         }
 
         .metric-number {
@@ -156,21 +161,23 @@
 
         .nav-btn {
             background: rgba(255, 255, 255, 0.9);
-            border: none;
+            border: 2px solid #AD9978;
             padding: 15px 25px;
             border-radius: 50px;
             cursor: pointer;
             font-size: 1.1em;
-            color: #C4B29A;
-            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: #AD9978;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(173, 153, 120, 0.2);
         }
 
         .nav-btn:hover {
-            background: #C4B29A;
+            background: #AD9978;
             color: white;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(173, 153, 120, 0.4);
         }
 
         .nav-btn:disabled {
@@ -182,18 +189,20 @@
             position: fixed;
             top: 30px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 10px 20px;
             border-radius: 25px;
-            font-weight: bold;
-            color: #C4B29A;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #AD9978;
+            border: 2px solid #AD9978;
+            box-shadow: 0 5px 15px rgba(173, 153, 120, 0.2);
         }
 
         .logo {
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, #AD9978, #C4B29A);
+            background: linear-gradient(135deg, #AD9978, #8B7958);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -201,7 +210,7 @@
             font-size: 3em;
             color: white;
             margin: 0 auto 30px;
-            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 10px 30px rgba(173, 153, 120, 0.4);
         }
 
         .use-cases {
@@ -218,33 +227,37 @@
         }
 
         .use-case strong {
-            color: #C4B29A;
+            color: #AD9978;
+            font-weight: 600;
         }
 
         .competitive-advantage {
-            background: linear-gradient(135deg, #28a745, #20c997);
+            background: linear-gradient(135deg, #AD9978, #8B7958);
             color: white;
             padding: 30px;
             border-radius: 15px;
             margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(173, 153, 120, 0.3);
         }
 
         .cta-section {
-            background: linear-gradient(135deg, #C4B29A, #AD9978);
+            background: linear-gradient(135deg, #AD9978, #8B7958);
             color: white;
             padding: 40px;
             border-radius: 20px;
             margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(173, 153, 120, 0.3);
         }
 
         .cta-btn {
             background: white;
-            color: #C4B29A;
+            color: #AD9978;
             padding: 15px 40px;
-            border: none;
+            border: 2px solid white;
             border-radius: 50px;
             font-size: 1.3em;
-            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             cursor: pointer;
             margin: 20px 10px;
             transition: all 0.3s ease;
@@ -252,6 +265,9 @@
         }
 
         .cta-btn:hover {
+            background: #AD9978;
+            color: white;
+            border-color: white;
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
@@ -288,9 +304,10 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: #AD9978;
+            background: linear-gradient(90deg, #AD9978, #C4AF8D);
             transition: width 0.3s ease;
             z-index: 1001;
+            box-shadow: 0 2px 10px rgba(173, 153, 120, 0.5);
         }
     </style>
 </head>
