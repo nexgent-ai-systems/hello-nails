@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Nails x Nexgent - Revolución IA</title>
+    <title>Hello Nails - Revolución IA</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         * {
@@ -15,13 +16,13 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: 
-                linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(26, 26, 46, 0.9)),
-                radial-gradient(circle at 20% 20%, rgba(147, 51, 234, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(79, 172, 254, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.9)),
+                radial-gradient(circle at 20% 20%, rgba(173, 153, 120, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(196, 178, 154, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(173, 153, 120, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #FFFFFF 0%, #FAFAFA 25%, #F5F5F5 50%, #FAFAFA 75%, #FFFFFF 100%);
             background-size: 400% 400%, 800px 800px, 600px 600px, 1000px 1000px, 400% 400%;
             animation: gradientShift 20s ease infinite;
             min-height: auto;
@@ -40,9 +41,9 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(79, 172, 254, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(173, 153, 120, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(196, 178, 154, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(173, 153, 120, 0.05) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
         }
@@ -77,12 +78,12 @@
 
         .hero-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(79, 172, 254, 0.2));
-            border: 1px solid rgba(147, 51, 234, 0.3);
+            background: linear-gradient(135deg, rgba(173, 153, 120, 0.15), rgba(196, 178, 154, 0.15));
+            border: 1px solid rgba(173, 153, 120, 0.3);
             border-radius: 50px;
             padding: 12px 30px;
             margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #AD9978;
             font-size: 0.9em;
             font-weight: 600;
             text-transform: uppercase;
@@ -92,28 +93,25 @@
         }
 
         @keyframes badgeGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.6), 0 0 60px rgba(79, 172, 254, 0.3); }
+            0%, 100% { box-shadow: 0 0 20px rgba(173, 153, 120, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(173, 153, 120, 0.4), 0 0 60px rgba(196, 178, 154, 0.2); }
         }
 
         .collaboration-title {
-            color: white;
+            color: #AD9978;
+            font-family: 'Bodoni Moda', serif;
             font-size: 5.5em;
-            font-weight: 900;
+            font-weight: 700;
             margin-bottom: 30px;
             margin-top: 40px;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 5px 20px rgba(173, 153, 120, 0.2);
             letter-spacing: -0.03em;
             line-height: 0.9;
-            background: linear-gradient(135deg, #ffffff, #f8fafc, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             position: relative;
         }
 
         .collaboration-subtitle {
-            color: rgba(255, 255, 255, 0.8);
+            color: #666;
             font-size: 1.8em;
             font-weight: 400;
             margin-bottom: 40px;
@@ -144,11 +142,11 @@
             border-radius: 35px;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(173, 153, 120, 0.08), rgba(173, 153, 120, 0.05));
+            border: 2px solid rgba(173, 153, 120, 0.2);
             box-shadow: 
-                0 25px 80px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                0 25px 80px rgba(173, 153, 120, 0.15),
+                inset 0 1px 0 rgba(173, 153, 120, 0.1);
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-style: preserve-3d;
         }
@@ -156,10 +154,10 @@
         .logo-wrapper:hover {
             transform: translateY(-20px) scale(1.08) rotateX(5deg);
             box-shadow: 
-                0 40px 120px rgba(0, 0, 0, 0.6),
-                0 0 60px rgba(147, 51, 234, 0.3);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-            border-color: rgba(255, 255, 255, 0.3);
+                0 40px 120px rgba(173, 153, 120, 0.25),
+                0 0 60px rgba(173, 153, 120, 0.2);
+            background: linear-gradient(135deg, rgba(173, 153, 120, 0.12), rgba(173, 153, 120, 0.08));
+            border-color: rgba(173, 153, 120, 0.3);
         }
 
         .hello-nails-logo {
@@ -184,12 +182,12 @@
             width: auto;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 8px 30px rgba(173, 153, 120, 0.2));
             transition: all 0.6s ease;
         }
 
         .logo-wrapper:hover .logo-img {
-            filter: drop-shadow(0 12px 40px rgba(147, 51, 234, 0.4));
+            filter: drop-shadow(0 12px 40px rgba(173, 153, 120, 0.3));
             transform: scale(1.05);
         }
 
@@ -230,17 +228,17 @@
             transform: translate(-50%, -50%);
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.95), rgba(109, 40, 217, 0.9));
+            background: linear-gradient(135deg, rgba(173, 153, 120, 0.95), rgba(196, 178, 154, 0.9));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             box-shadow: 
-                0 25px 80px rgba(147, 51, 234, 0.6),
+                0 25px 80px rgba(173, 153, 120, 0.4),
                 inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                0 0 50px rgba(147, 51, 234, 0.4);
-            border: 3px solid rgba(255, 255, 255, 0.4);
+                0 0 50px rgba(173, 153, 120, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.6);
             animation: pulse 4s ease-in-out infinite, rotate 20s linear infinite;
             z-index: 10;
             backdrop-filter: blur(15px);
@@ -270,16 +268,16 @@
             0%, 100% { 
                 transform: translate(-50%, -50%) scale(1);
                 box-shadow: 
-                    0 25px 80px rgba(147, 51, 234, 0.6),
+                    0 25px 80px rgba(173, 153, 120, 0.4),
                     inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                    0 0 50px rgba(147, 51, 234, 0.4);
+                    0 0 50px rgba(173, 153, 120, 0.3);
             }
             50% { 
                 transform: translate(-50%, -50%) scale(1.1);
                 box-shadow: 
-                    0 35px 100px rgba(147, 51, 234, 0.8),
+                    0 35px 100px rgba(173, 153, 120, 0.5),
                     inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                    0 0 70px rgba(147, 51, 234, 0.6);
+                    0 0 70px rgba(173, 153, 120, 0.4);
             }
         }
 
@@ -544,48 +542,50 @@
         }
 
         .partnership-text {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(173, 153, 120, 0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 40px 50px;
             border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(173, 153, 120, 0.2);
             margin: 40px auto 60px auto;
             max-width: 800px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(173, 153, 120, 0.15);
             position: relative;
         }
 
         .partnership-text h3 {
-            color: white;
+            color: #AD9978;
+            font-family: 'Bodoni Moda', serif;
             font-size: 1.8em;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 20px;
         }
 
         .partnership-text p {
-            color: rgba(255, 255, 255, 0.9);
+            color: #666;
             font-size: 1.3em;
             line-height: 1.6;
             font-weight: 400;
         }
 
         .start-button {
-            background: linear-gradient(135deg, rgba(147, 51, 234, 0.95), rgba(109, 40, 217, 0.9));
+            background: linear-gradient(135deg, #AD9978, #C4B29A);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             color: white;
             padding: 18px 40px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid #AD9978;
             border-radius: 50px;
             font-size: 1.2em;
             font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 
-                0 15px 40px rgba(147, 51, 234, 0.4),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                0 0 30px rgba(147, 51, 234, 0.3);
+                0 15px 40px rgba(173, 153, 120, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(173, 153, 120, 0.2);
             text-decoration: none;
             display: inline-block;
             margin: 0 0 40px 0;
@@ -618,11 +618,11 @@
         .start-button:hover {
             transform: translateY(-5px) scale(1.03);
             box-shadow: 
-                0 20px 60px rgba(147, 51, 234, 0.6),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                0 0 50px rgba(147, 51, 234, 0.5);
+                0 20px 60px rgba(173, 153, 120, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 50px rgba(173, 153, 120, 0.4);
             color: white;
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: #C4B29A;
         }
 
         .floating-particles {
@@ -737,29 +737,21 @@
                     </h1>
                     
                     <p class="collaboration-subtitle" data-aos="fade-up" data-aos-delay="600">
-                        Hello Nails y Nexgent se unen para presentar <strong>Naia</strong>, el agente de inteligencia artificial 
+                        Hello Nails presenta <strong>Naia</strong>, el agente de inteligencia artificial 
                         que transformará la experiencia del cliente en cada franquicia para siempre
                     </p>
             
             <div class="logos-container" data-aos="fade-up" data-aos-delay="800">
-                <div class="logo-wrapper hello-nails-logo">
-                    <img src="assets/images/logos/image 3.png" alt="Hello Nails Logo" class="logo-img">
-                </div>
-                
-                <div class="collaboration-symbol">
-                    <img src="assets/images/icons/Vector (14).svg" alt="Colaboración" class="handshake-icon">
-                </div>
-                
-                <div class="logo-wrapper nexgent-logo">
-                    <img src="assets/images/logos/Sin título-2-12 2.png" alt="Nexgent Logo" class="logo-img">
+                <div class="logo-wrapper hello-nails-logo" style="position: static; transform: none; margin: 0 auto;">
+                    <img src="assets/images/logos/Logo Hello ORO.png" alt="Hello Nails Logo" class="logo-img">
                 </div>
             </div>
 
             <div class="partnership-text" data-aos="fade-up" data-aos-delay="1000">
-                                        <h3>Una Alianza que Cambia las Reglas del Juego</h3>
+                                        <h3>Tecnología que Cambia las Reglas del Juego</h3>
                         <p>
-                            La empresa líder en franquicias de belleza de Hello Nails se fusiona con 
-                            la tecnología de IA más avanzada de Nexgent. Juntos, hemos creado <strong>Naia</strong>, 
+                            La empresa líder en franquicias de belleza Hello Nails presenta  
+                            la tecnología de IA más avanzada del sector. Hemos creado <strong>Naia</strong>, 
                             la primera solución integral de atención al cliente con IA específicamente diseñada 
                             para el sector de la belleza y las uñas.
                         </p>
@@ -812,7 +804,7 @@
                 position: fixed;
                 width: 20px;
                 height: 20px;
-                background: radial-gradient(circle, rgba(147, 51, 234, 0.6), transparent);
+                background: radial-gradient(circle, rgba(173, 153, 120, 0.4), transparent);
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 9999;
