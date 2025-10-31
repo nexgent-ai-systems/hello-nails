@@ -1991,9 +1991,9 @@
     </div>
 
     <script>
-                 let currentSlide = 0;
-         const slides = document.querySelectorAll('.slide');
-         const totalSlides = slides.length;
+        let currentSlide = 0;
+        let slides;
+        let totalSlides;
 
         function showSlide(n) {
             slides[currentSlide].classList.remove('active');
@@ -2019,12 +2019,6 @@
                 showSlide(currentSlide - 1);
             }
         }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'ArrowRight') changeSlide(1);
-        });
 
         // Generar partículas flotantes
         function createParticles() {
@@ -2348,9 +2342,19 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar slides después de que el DOM esté listo
+            slides = document.querySelectorAll('.slide');
+            totalSlides = slides.length;
+            
             createParticles();
             createCursorEffect();
-        showSlide(0);
+            showSlide(0);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') changeSlide(-1);
+                if (e.key === 'ArrowRight') changeSlide(1);
+            });
         });
 
         // Touch/swipe support for mobile
