@@ -1635,6 +1635,16 @@
                     let isListening = false;
                     let conversationHistory = [];
                     
+                    // Estado de la conversación para mantener contexto
+                    let conversationState = {
+                        stage: 'greeting', // greeting, selecting_service, selecting_date, selecting_time, getting_info, confirmed
+                        service: null,
+                        date: null,
+                        time: null,
+                        name: null,
+                        phone: null
+                    };
+                    
                     // Inicializar reconocimiento de voz
                     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
                         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1642,6 +1652,7 @@
                         recognition.lang = 'es-ES';
                         recognition.continuous = false;
                         recognition.interimResults = false;
+                        recognition.maxAlternatives = 1;
                     }
                     
                     function playVoiceDemo() {
@@ -1666,6 +1677,16 @@
                         transcription.style.display = 'block';
                         transcriptionText.innerHTML = '';
                         conversationHistory = [];
+                        
+                        // Resetear estado de la conversación
+                        conversationState = {
+                            stage: 'greeting',
+                            service: null,
+                            date: null,
+                            time: null,
+                            name: null,
+                            phone: null
+                        };
                         
                         // Mensaje del sistema
                         addMessage('system', '📞 Llamada conectada... Naia te saludará en un momento.');
@@ -1695,20 +1716,43 @@
                         
                         const utterance = new SpeechSynthesisUtterance(text);
                         utterance.lang = 'es-ES';
-                        utterance.rate = 0.95;
-                        utterance.pitch = 1.1;
+                        utterance.rate = 1.0; // Velocidad más natural
+                        utterance.pitch = 1.05; // Tono ligeramente más natural
+                        utterance.volume = 1.0;
                         
-                        // Buscar voz femenina española
+                        // Buscar la mejor voz femenina española disponible
                         const voices = synthesis.getVoices();
-                        const spanishVoice = voices.find(voice => 
-                            voice.lang.startsWith('es') && voice.name.includes('Female')
-                        ) || voices.find(voice => voice.lang.startsWith('es'));
                         
-                        if (spanishVoice) {
-                            utterance.voice = spanishVoice;
+                        // Prioridad de voces (las mejores primero)
+                        const voicePriority = [
+                            'Google español',
+                            'Microsoft Helena',
+                            'Mónica',
+                            'Paulina',
+                            'es-ES',
+                            'es-MX',
+                            'Female',
+                            'es'
+                        ];
+                        
+                        let selectedVoice = null;
+                        for (const priority of voicePriority) {
+                            selectedVoice = voices.find(voice => 
+                                voice.name.includes(priority) || voice.lang.includes(priority)
+                            );
+                            if (selectedVoice) break;
+                        }
+                        
+                        if (selectedVoice) {
+                            utterance.voice = selectedVoice;
                         }
                         
                         utterance.onend = callback;
+                        utterance.onerror = (e) => {
+                            console.error('Error en síntesis de voz:', e);
+                            if (callback) callback();
+                        };
+                        
                         synthesis.speak(utterance);
                     }
                     
@@ -1763,57 +1807,126 @@
                     
                     function generateAIResponse(userInput) {
                         const input = userInput.toLowerCase();
+                        let response = '';
                         
-                        // Respuestas inteligentes basadas en palabras clave
-                        if (input.includes('hola') || input.includes('buenos') || input.includes('buenas')) {
-                            return '¡Hola! ¿En qué puedo ayudarte hoy?';
+                        // Respuestas basadas en el CONTEXTO de la conversación
+                        switch (conversationState.stage) {
+                            case 'greeting':
+                                // Primera interacción o petición general
+                                if (input.includes('reservar') || input.includes('reserva') || input.includes('cita') || input.includes('agendar') || input.includes('quiero') || input.includes('hacer')) {
+                                    conversationState.stage = 'selecting_service';
+                                    response = 'Perfecto. Te ofrezco estos servicios: manicura clásica por 25 euros, manicura gel por 35 euros, pedicura por 30 euros, y nail art desde 45 euros. ¿Cuál te interesa?';
+                                }
+                                else if (input.includes('precio') || input.includes('cuesta') || input.includes('cuánto')) {
+                                    response = 'Claro. Nuestros precios son: Manicura clásica 25 euros, Manicura gel 35 euros, Pedicura 30 euros, y Nail art desde 45 euros. ¿Te gustaría reservar alguno?';
+                                }
+                                else if (input.includes('horario') || input.includes('abierto') || input.includes('abren')) {
+                                    response = 'Estamos abiertos de lunes a viernes de 10 a 20 horas, y los sábados de 10 a 18 horas. ¿Quieres reservar una cita?';
+                                }
+                                else {
+                                    conversationState.stage = 'selecting_service';
+                                    response = 'Genial. ¿Qué servicio te interesa? Tenemos manicura clásica, manicura gel, pedicura o nail art.';
+                                }
+                                break;
+                            
+                            case 'selecting_service':
+                                // Identificar el servicio que quiere
+                                if (input.includes('gel') || input.includes('semipermanente')) {
+                                    conversationState.service = 'manicura gel';
+                                    conversationState.stage = 'selecting_date';
+                                    response = 'Estupendo, manicura gel. Dura 60 minutos y cuesta 35 euros. ¿Para qué día te vendría bien?';
+                                }
+                                else if (input.includes('clásica') || input.includes('clasica') || input.includes('normal') || (input.includes('manicura') && !input.includes('gel'))) {
+                                    conversationState.service = 'manicura clásica';
+                                    conversationState.stage = 'selecting_date';
+                                    response = 'Perfecto, manicura clásica. Dura 45 minutos y cuesta 25 euros. ¿Qué día prefieres?';
+                                }
+                                else if (input.includes('pedicura')) {
+                                    conversationState.service = 'pedicura';
+                                    conversationState.stage = 'selecting_date';
+                                    response = 'Genial, pedicura completa. Dura 60 minutos y cuesta 30 euros. ¿Para qué día?';
+                                }
+                                else if (input.includes('nail art') || input.includes('diseño') || input.includes('decoración')) {
+                                    conversationState.service = 'nail art';
+                                    conversationState.stage = 'selecting_date';
+                                    response = 'Excelente elección, nail art personalizado. Cuesta desde 45 euros según el diseño. ¿Qué día te viene bien?';
+                                }
+                                else {
+                                    response = 'No he entendido bien. ¿Quieres manicura clásica, manicura gel, pedicura o nail art?';
+                                }
+                                break;
+                            
+                            case 'selecting_date':
+                                // Identificar el día
+                                const dias = ['lunes', 'martes', 'miércoles', 'miercoles', 'jueves', 'viernes', 'sábado', 'sabado', 'domingo'];
+                                const diaEncontrado = dias.find(d => input.includes(d));
+                                
+                                if (diaEncontrado) {
+                                    conversationState.date = diaEncontrado;
+                                    conversationState.stage = 'selecting_time';
+                                    response = `Perfecto, para el ${diaEncontrado}. Déjame consultar... Tengo disponible a las 10 de la mañana, 12 del mediodía, 4 de la tarde y 6 de la tarde. ¿Cuál te viene mejor?`;
+                                }
+                                else if (input.includes('mañana') || input.includes('hoy') || input.includes('pasado')) {
+                                    conversationState.date = input;
+                                    conversationState.stage = 'selecting_time';
+                                    response = 'Vale, déjame ver los horarios disponibles... Tengo hueco a las 10:00, 12:00, 16:00 y 18:00. ¿Cuál prefieres?';
+                                }
+                                else {
+                                    response = 'No he captado el día. ¿Qué día de la semana prefieres? Por ejemplo, lunes, martes, viernes...';
+                                }
+                                break;
+                            
+                            case 'selecting_time':
+                                // Identificar la hora
+                                const horaMatch = input.match(/(\d{1,2})/);
+                                if (horaMatch || input.includes('mañana') || input.includes('tarde') || input.includes('mediodía')) {
+                                    conversationState.time = input;
+                                    conversationState.stage = 'getting_info';
+                                    response = 'Genial, he reservado ese horario para ti. Para confirmar la cita, ¿me dices tu nombre completo?';
+                                }
+                                else {
+                                    response = 'Disculpa, no he entendido la hora. ¿A las 10, a las 12, a las 4 de la tarde o a las 6 de la tarde?';
+                                }
+                                break;
+                            
+                            case 'getting_info':
+                                // Recopilar nombre y teléfono
+                                if (!conversationState.name) {
+                                    conversationState.name = userInput;
+                                    response = 'Perfecto, ' + userInput + '. Ahora necesito tu número de teléfono para enviarte la confirmación.';
+                                }
+                                else if (!conversationState.phone) {
+                                    conversationState.phone = userInput;
+                                    conversationState.stage = 'confirmed';
+                                    response = `Excelente. He confirmado tu cita de ${conversationState.service} para el ${conversationState.date}. Te enviaré un recordatorio por WhatsApp el día anterior. ¿Necesitas algo más?`;
+                                }
+                                break;
+                            
+                            case 'confirmed':
+                                // Después de confirmar
+                                if (input.includes('no') || input.includes('nada') || input.includes('eso es todo')) {
+                                    response = 'Perfecto. Muchas gracias por elegir Hello Nails. Nos vemos pronto. ¡Que tengas un gran día!';
+                                }
+                                else if (input.includes('gracias')) {
+                                    response = '¡De nada! Ha sido un placer ayudarte. ¡Hasta pronto en Hello Nails!';
+                                }
+                                else if (input.includes('sí') || input.includes('si') || input.includes('otra')) {
+                                    conversationState.stage = 'selecting_service';
+                                    conversationState.service = null;
+                                    response = '¡Claro! ¿Qué otro servicio te gustaría reservar?';
+                                }
+                                else {
+                                    response = '¿Hay algo más en lo que pueda ayudarte?';
+                                }
+                                break;
                         }
-                        else if (input.includes('reservar') || input.includes('reserva') || input.includes('cita') || input.includes('agendar')) {
-                            if (input.includes('gel') || input.includes('semipermanente')) {
-                                return 'Perfecto. La manicura gel tiene una duración de 60 minutos y un precio de 35 euros. ¿Qué día te vendría bien?';
-                            } else if (input.includes('clásica') || input.includes('clasica') || input.includes('normal')) {
-                                return 'Genial. La manicura clásica dura 45 minutos y cuesta 25 euros. ¿Para qué día la quieres?';
-                            } else if (input.includes('pedicura')) {
-                                return 'Estupendo. La pedicura completa dura 60 minutos y cuesta 30 euros. ¿Qué día prefieres?';
-                            } else {
-                                return '¡Claro! Ofrecemos manicura clásica, manicura gel, pedicura y nail art. ¿Cuál te interesa?';
-                            }
+                        
+                        // Respuestas de salida en cualquier momento
+                        if (input.includes('adiós') || input.includes('adios') || input.includes('chao') || input.includes('hasta luego')) {
+                            response = '¡Hasta luego! Gracias por llamar a Hello Nails. Que tengas un excelente día.';
                         }
-                        else if (input.match(/lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo/)) {
-                            const dias = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-                            const dia = dias.find(d => input.includes(d)) || 'el día que mencionaste';
-                            return `Perfecto, déjame ver la disponibilidad para ${dia}... Tengo horarios disponibles a las 10:00, 12:00, 16:00 y 18:00. ¿Cuál te viene mejor?`;
-                        }
-                        else if (input.match(/\d{1,2}:?\d{0,2}/) || input.includes('mañana') || input.includes('tarde')) {
-                            return 'Excelente. He reservado tu cita para ese horario. ¿Podrías darme tu nombre y teléfono para confirmar?';
-                        }
-                        else if (input.includes('precio') || input.includes('cuesta') || input.includes('cuánto') || input.includes('cuanto')) {
-                            return 'Nuestros precios son: Manicura clásica 25 euros, Manicura gel 35 euros, Pedicura 30 euros, y Nail art desde 45 euros. ¿Te interesa algún servicio?';
-                        }
-                        else if (input.includes('horario') || input.includes('abierto') || input.includes('abren')) {
-                            return 'Estamos abiertos de lunes a viernes de 10 a 20 horas, y los sábados de 10 a 18 horas. ¿Quieres reservar una cita?';
-                        }
-                        else if (input.includes('cancelar') || input.includes('cambiar')) {
-                            return 'Claro, puedo ayudarte con eso. ¿Podrías darme tu nombre o número de reserva?';
-                        }
-                        else if (input.includes('nombre') || input.includes('llamo') || input.includes('soy')) {
-                            return 'Perfecto, ya tengo tu nombre anotado. Tu cita está confirmada. Te enviaré un recordatorio por WhatsApp el día anterior. ¿Necesitas algo más?';
-                        }
-                        else if (input.includes('teléfono') || input.includes('telefono') || input.match(/\d{9}/)) {
-                            return 'Genial, tu número está registrado. La reserva está completa. ¿Hay algo más en lo que pueda ayudarte?';
-                        }
-                        else if (input.includes('no') || input.includes('nada') || input.includes('eso es todo')) {
-                            return 'Perfecto. Nos vemos pronto en Hello Nails. ¡Que tengas un excelente día!';
-                        }
-                        else if (input.includes('gracias')) {
-                            return '¡De nada! Es un placer ayudarte. ¡Hasta pronto!';
-                        }
-                        else if (input.includes('adiós') || input.includes('adios') || input.includes('chao')) {
-                            return '¡Hasta luego! Nos vemos pronto en Hello Nails.';
-                        }
-                        else {
-                            return 'Entiendo. Puedo ayudarte a reservar citas, consultar precios, horarios o responder cualquier pregunta sobre Hello Nails. ¿Qué necesitas?';
-                        }
+                        
+                        return response;
                     }
                     
                     function addMessage(speaker, text) {
