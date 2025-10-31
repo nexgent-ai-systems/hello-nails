@@ -1629,6 +1629,21 @@
                 </style>
 
                 <script>
+                    // Variables globales para voz
+                    let recognition;
+                    let synthesis = window.speechSynthesis;
+                    let isListening = false;
+                    let conversationHistory = [];
+                    
+                    // Inicializar reconocimiento de voz
+                    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                        recognition = new SpeechRecognition();
+                        recognition.lang = 'es-ES';
+                        recognition.continuous = false;
+                        recognition.interimResults = false;
+                    }
+                    
                     function playVoiceDemo() {
                         const btn = document.getElementById('playVoiceBtn');
                         const btnText = document.getElementById('playBtnText');
@@ -1637,83 +1652,216 @@
                         const transcriptionText = document.getElementById('transcriptionText');
                         const avatar = document.getElementById('voiceAvatar');
                         
-                        // Deshabilitar botón
+                        if (!recognition) {
+                            alert('Tu navegador no soporta reconocimiento de voz. Por favor usa Chrome, Edge o Safari.');
+                            return;
+                        }
+                        
+                        // Iniciar llamada
                         btn.disabled = true;
                         btn.style.opacity = '0.7';
-                        btnText.textContent = 'Llamando...';
+                        btnText.textContent = 'En llamada...';
+                        status.textContent = 'Llamada conectada';
+                        avatar.innerHTML = '<i class="fas fa-phone-volume"></i>';
+                        transcription.style.display = 'block';
+                        transcriptionText.innerHTML = '';
+                        conversationHistory = [];
                         
-                        // Simulación de conversación telefónica
-                        const conversation = [
-                            { speaker: 'system', text: '📞 Llamada conectada...', delay: 1000 },
-                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Hola, buenos días. Bienvenido a Hello Nails. Soy Naia, tu asistente virtual. ¿En qué puedo ayudarte?', delay: 2000 },
-                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> Hola, me gustaría reservar una cita para manicura gel.', delay: 3000 },
-                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Perfecto. La manicura gel tiene una duración de 60 minutos y un precio de 35 euros. ¿Qué día te vendría bien?', delay: 3000 },
-                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> El viernes por la tarde, si es posible.', delay: 2500 },
-                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Déjame revisar la disponibilidad... Tengo disponible el viernes a las 16:00, 17:30 o 19:00. ¿Cuál prefieres?', delay: 3000 },
-                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> A las 17:30 me viene genial.', delay: 2000 },
-                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Excelente. He reservado tu cita para el viernes a las 17:30 para manicura gel. ¿Podrías darme tu nombre y teléfono para confirmar?', delay: 3500 },
-                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> Sí, soy María García, mi teléfono es 612345678.', delay: 2500 },
-                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Perfecto, María. Tu cita está confirmada. Te enviaré un recordatorio por WhatsApp el día anterior. ¿Necesitas algo más?', delay: 3500 },
-                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> No, eso es todo. Muchas gracias.', delay: 2000 },
-                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> ¡Gracias a ti, María! Nos vemos el viernes. Que tengas un excelente día.', delay: 3000 },
-                            { speaker: 'system', text: '✅ Llamada finalizada. Reserva confirmada exitosamente.', delay: 1500 }
-                        ];
+                        // Mensaje del sistema
+                        addMessage('system', '📞 Llamada conectada... Naia te saludará en un momento.');
                         
-                        // Mostrar transcripción
+                        // Naia saluda primero
                         setTimeout(() => {
-                            status.textContent = 'En llamada...';
-                            avatar.innerHTML = '<i class="fas fa-phone-volume"></i>';
-                            transcription.style.display = 'block';
-                            transcriptionText.innerHTML = '';
+                            const greeting = 'Hola, buenos días. Bienvenido a Hello Nails. Soy Naia, tu asistente virtual. ¿En qué puedo ayudarte?';
+                            addMessage('naia', '🗣️ <strong>Naia:</strong> ' + greeting);
+                            speak(greeting, () => {
+                                // Después de saludar, escuchar al usuario
+                                startListening();
+                            });
+                        }, 1000);
+                        
+                        // Cambiar botón a "Colgar"
+                        setTimeout(() => {
+                            btn.disabled = false;
+                            btn.style.opacity = '1';
+                            btnText.textContent = 'Colgar Llamada';
+                            btn.onclick = endCall;
+                        }, 2000);
+                    }
+                    
+                    function speak(text, callback) {
+                        // Cancelar cualquier voz anterior
+                        synthesis.cancel();
+                        
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = 'es-ES';
+                        utterance.rate = 0.95;
+                        utterance.pitch = 1.1;
+                        
+                        // Buscar voz femenina española
+                        const voices = synthesis.getVoices();
+                        const spanishVoice = voices.find(voice => 
+                            voice.lang.startsWith('es') && voice.name.includes('Female')
+                        ) || voices.find(voice => voice.lang.startsWith('es'));
+                        
+                        if (spanishVoice) {
+                            utterance.voice = spanishVoice;
+                        }
+                        
+                        utterance.onend = callback;
+                        synthesis.speak(utterance);
+                    }
+                    
+                    function startListening() {
+                        if (!recognition || isListening) return;
+                        
+                        isListening = true;
+                        const status = document.getElementById('voiceStatus');
+                        const avatar = document.getElementById('voiceAvatar');
+                        
+                        status.textContent = '🎤 Escuchando... Habla ahora';
+                        avatar.innerHTML = '<i class="fas fa-microphone" style="animation: pulse-voice 1s ease-in-out infinite;"></i>';
+                        
+                        recognition.start();
+                        
+                        recognition.onresult = (event) => {
+                            const transcript = event.results[0][0].transcript;
+                            isListening = false;
                             
-                            let currentIndex = 0;
+                            // Mostrar lo que dijo el usuario
+                            addMessage('client', '👤 <strong>Tú:</strong> ' + transcript);
+                            status.textContent = 'Naia está pensando...';
+                            avatar.innerHTML = '<i class="fas fa-brain"></i>';
                             
-                            function showNextMessage() {
-                                if (currentIndex < conversation.length) {
-                                    const message = conversation[currentIndex];
-                                    
-                                    // Mostrar indicador de "escribiendo"
-                                    const typingIndicator = document.createElement('div');
-                                    typingIndicator.style.margin = '15px 0';
-                                    typingIndicator.innerHTML = '<span class="typing-indicator"></span><span class="typing-indicator"></span><span class="typing-indicator"></span>';
-                                    transcriptionText.appendChild(typingIndicator);
-                                    
-                                    setTimeout(() => {
-                                        typingIndicator.remove();
-                                        
-                                        const msgDiv = document.createElement('div');
-                                        msgDiv.style.margin = '15px 0';
-                                        msgDiv.style.padding = '10px 15px';
-                                        msgDiv.style.background = message.speaker === 'naia' ? 'rgba(173, 153, 120, 0.1)' : 
-                                                                 message.speaker === 'client' ? 'rgba(255, 255, 255, 0.8)' : 
-                                                                 'rgba(173, 153, 120, 0.05)';
-                                        msgDiv.style.borderRadius = '10px';
-                                        msgDiv.innerHTML = message.text;
-                                        transcriptionText.appendChild(msgDiv);
-                                        
-                                        // Auto-scroll
-                                        transcription.scrollTop = transcription.scrollHeight;
-                                        
-                                        currentIndex++;
-                                        
-                                        if (currentIndex < conversation.length) {
-                                            setTimeout(showNextMessage, message.delay);
-                                        } else {
-                                            // Finalizar
-                                            setTimeout(() => {
-                                                status.textContent = 'Llamada finalizada';
-                                                avatar.innerHTML = '<i class="fas fa-check-circle"></i>';
-                                                btn.disabled = false;
-                                                btn.style.opacity = '1';
-                                                btnText.textContent = 'Reproducir de Nuevo';
-                                            }, 1000);
-                                        }
-                                    }, 800);
-                                }
+                            // Generar respuesta de IA
+                            setTimeout(() => {
+                                const response = generateAIResponse(transcript);
+                                addMessage('naia', '🗣️ <strong>Naia:</strong> ' + response);
+                                
+                                speak(response, () => {
+                                    // Después de responder, volver a escuchar
+                                    if (document.getElementById('playBtnText').textContent === 'Colgar Llamada') {
+                                        setTimeout(startListening, 500);
+                                    }
+                                });
+                            }, 800);
+                        };
+                        
+                        recognition.onerror = (event) => {
+                            isListening = false;
+                            console.error('Error de reconocimiento:', event.error);
+                            if (event.error !== 'no-speech' && event.error !== 'aborted') {
+                                status.textContent = 'No te escuché, vuelve a intentarlo';
+                                setTimeout(startListening, 1500);
                             }
-                            
-                            showNextMessage();
-                        }, 500);
+                        };
+                        
+                        recognition.onend = () => {
+                            isListening = false;
+                        };
+                    }
+                    
+                    function generateAIResponse(userInput) {
+                        const input = userInput.toLowerCase();
+                        
+                        // Respuestas inteligentes basadas en palabras clave
+                        if (input.includes('hola') || input.includes('buenos') || input.includes('buenas')) {
+                            return '¡Hola! ¿En qué puedo ayudarte hoy?';
+                        }
+                        else if (input.includes('reservar') || input.includes('reserva') || input.includes('cita') || input.includes('agendar')) {
+                            if (input.includes('gel') || input.includes('semipermanente')) {
+                                return 'Perfecto. La manicura gel tiene una duración de 60 minutos y un precio de 35 euros. ¿Qué día te vendría bien?';
+                            } else if (input.includes('clásica') || input.includes('clasica') || input.includes('normal')) {
+                                return 'Genial. La manicura clásica dura 45 minutos y cuesta 25 euros. ¿Para qué día la quieres?';
+                            } else if (input.includes('pedicura')) {
+                                return 'Estupendo. La pedicura completa dura 60 minutos y cuesta 30 euros. ¿Qué día prefieres?';
+                            } else {
+                                return '¡Claro! Ofrecemos manicura clásica, manicura gel, pedicura y nail art. ¿Cuál te interesa?';
+                            }
+                        }
+                        else if (input.match(/lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo/)) {
+                            const dias = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+                            const dia = dias.find(d => input.includes(d)) || 'el día que mencionaste';
+                            return `Perfecto, déjame ver la disponibilidad para ${dia}... Tengo horarios disponibles a las 10:00, 12:00, 16:00 y 18:00. ¿Cuál te viene mejor?`;
+                        }
+                        else if (input.match(/\d{1,2}:?\d{0,2}/) || input.includes('mañana') || input.includes('tarde')) {
+                            return 'Excelente. He reservado tu cita para ese horario. ¿Podrías darme tu nombre y teléfono para confirmar?';
+                        }
+                        else if (input.includes('precio') || input.includes('cuesta') || input.includes('cuánto') || input.includes('cuanto')) {
+                            return 'Nuestros precios son: Manicura clásica 25 euros, Manicura gel 35 euros, Pedicura 30 euros, y Nail art desde 45 euros. ¿Te interesa algún servicio?';
+                        }
+                        else if (input.includes('horario') || input.includes('abierto') || input.includes('abren')) {
+                            return 'Estamos abiertos de lunes a viernes de 10 a 20 horas, y los sábados de 10 a 18 horas. ¿Quieres reservar una cita?';
+                        }
+                        else if (input.includes('cancelar') || input.includes('cambiar')) {
+                            return 'Claro, puedo ayudarte con eso. ¿Podrías darme tu nombre o número de reserva?';
+                        }
+                        else if (input.includes('nombre') || input.includes('llamo') || input.includes('soy')) {
+                            return 'Perfecto, ya tengo tu nombre anotado. Tu cita está confirmada. Te enviaré un recordatorio por WhatsApp el día anterior. ¿Necesitas algo más?';
+                        }
+                        else if (input.includes('teléfono') || input.includes('telefono') || input.match(/\d{9}/)) {
+                            return 'Genial, tu número está registrado. La reserva está completa. ¿Hay algo más en lo que pueda ayudarte?';
+                        }
+                        else if (input.includes('no') || input.includes('nada') || input.includes('eso es todo')) {
+                            return 'Perfecto. Nos vemos pronto en Hello Nails. ¡Que tengas un excelente día!';
+                        }
+                        else if (input.includes('gracias')) {
+                            return '¡De nada! Es un placer ayudarte. ¡Hasta pronto!';
+                        }
+                        else if (input.includes('adiós') || input.includes('adios') || input.includes('chao')) {
+                            return '¡Hasta luego! Nos vemos pronto en Hello Nails.';
+                        }
+                        else {
+                            return 'Entiendo. Puedo ayudarte a reservar citas, consultar precios, horarios o responder cualquier pregunta sobre Hello Nails. ¿Qué necesitas?';
+                        }
+                    }
+                    
+                    function addMessage(speaker, text) {
+                        const transcriptionText = document.getElementById('transcriptionText');
+                        const transcription = document.getElementById('transcription');
+                        
+                        const msgDiv = document.createElement('div');
+                        msgDiv.style.margin = '15px 0';
+                        msgDiv.style.padding = '12px 18px';
+                        msgDiv.style.background = speaker === 'naia' ? 'rgba(173, 153, 120, 0.15)' : 
+                                                 speaker === 'client' ? 'rgba(255, 255, 255, 0.9)' : 
+                                                 'rgba(173, 153, 120, 0.08)';
+                        msgDiv.style.borderRadius = '12px';
+                        msgDiv.style.borderLeft = speaker === 'naia' ? '4px solid #AD9978' : 
+                                                  speaker === 'client' ? '4px solid #5a5040' : 'none';
+                        msgDiv.innerHTML = text;
+                        transcriptionText.appendChild(msgDiv);
+                        
+                        // Auto-scroll
+                        transcription.scrollTop = transcription.scrollHeight;
+                    }
+                    
+                    function endCall() {
+                        const btn = document.getElementById('playVoiceBtn');
+                        const btnText = document.getElementById('playBtnText');
+                        const status = document.getElementById('voiceStatus');
+                        const avatar = document.getElementById('voiceAvatar');
+                        
+                        // Detener reconocimiento y síntesis
+                        if (recognition) recognition.stop();
+                        synthesis.cancel();
+                        isListening = false;
+                        
+                        // Mensaje de despedida
+                        addMessage('system', '✅ Llamada finalizada. ¡Gracias por usar Naia!');
+                        status.textContent = 'Llamada finalizada';
+                        avatar.innerHTML = '<i class="fas fa-check-circle"></i>';
+                        
+                        // Restaurar botón
+                        btn.onclick = playVoiceDemo;
+                        btnText.textContent = 'Iniciar Nueva Llamada';
+                    }
+                    
+                    // Cargar voces cuando estén disponibles
+                    if (synthesis) {
+                        synthesis.onvoiceschanged = () => {
+                            synthesis.getVoices();
+                        };
                     }
                 </script>
             </div>
