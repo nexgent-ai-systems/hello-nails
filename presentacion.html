@@ -1589,20 +1589,21 @@
             cursor.className = 'cursor-glow';
             cursor.style.cssText = `
                 position: fixed;
-                width: 20px;
-                height: 20px;
+                width: 16px;
+                height: 16px;
                 background: radial-gradient(circle, rgba(173, 153, 120, 0.8), rgba(196, 175, 141, 0.4));
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 9999;
-                transition: transform 0.1s ease;
+                transform: translate(-50%, -50%);
+                transition: left 0.1s ease, top 0.1s ease;
                 box-shadow: 0 0 15px rgba(173, 153, 120, 0.6);
             `;
             document.body.appendChild(cursor);
 
             document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 10 + 'px';
-                cursor.style.top = e.clientY - 10 + 'px';
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
             });
         }
 
