@@ -1183,7 +1183,7 @@
 <body>
     <div class="floating-particles"></div>
     <div class="progress-bar" id="progressBar"></div>
-    <div class="slide-counter" id="slideCounter">1 / 9</div>
+    <div class="slide-counter" id="slideCounter">1 / 11</div>
     
     <!-- Botón para volver al inicio -->
     <a href="index.html" class="home-button" title="Volver al inicio">
@@ -1224,6 +1224,9 @@
                     <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em; max-width: 800px; margin: 0 auto;">
                         <strong>Naia</strong> es tu agente de inteligencia artificial especializada exclusivamente en Hello Nails. 
                         Combina la tecnología más avanzada con conocimiento profundo del sector de la belleza y las uñas.
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.15em; max-width: 800px; margin: 20px auto 0; font-weight: 500;">
+                        💬 <strong>WhatsApp</strong> • 📞 <strong>Llamadas telefónicas</strong> • 🤖 <strong>Inteligencia Artificial</strong>
                     </p>
                 </div>
                 
@@ -1434,7 +1437,39 @@
             </div>
         </div>
 
-        <!-- Slide 9: Demo Agente IA WhatsApp -->
+        <!-- Slide 9: Llamadas Telefónicas con IA -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">📞 Naia: Llamadas Telefónicas con IA</h1>
+                <p class="slide-subtitle">Atención telefónica automática 24/7 con voz natural</p>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-title">📞 Atención Telefónica Inteligente</div>
+                        Naia puede atender llamadas telefónicas con voz natural, responder preguntas sobre servicios, precios y disponibilidad, igual que lo haría una recepcionista humana.
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">📅 Gestión de Reservas por Teléfono</div>
+                        Los clientes pueden reservar, modificar o cancelar citas por teléfono directamente con Naia, sin necesidad de esperar a que atienda un humano. <strong>Disponible incluso fuera de horario.</strong>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🔄 Gestión de Cancelaciones</div>
+                        Naia se encarga automáticamente de las cancelaciones, liberando huecos en la agenda y ofreciéndolos a otros clientes en lista de espera.
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">🗣️ Voz Natural y Profesional</div>
+                        Con tecnología de síntesis de voz avanzada, Naia suena natural, amigable y profesional. Los clientes disfrutan de una experiencia fluida y personalizada.
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>📈 El 40% de las llamadas ocurren fuera del horario laboral</strong><br>
+                    Con Naia, nunca más perderás una reserva por no poder contestar el teléfono
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Demo Agente IA WhatsApp -->
         <div class="slide">
             <div class="slide-content">
                                         <h1 class="slide-title">Demo en Vivo: Naia en WhatsApp</h1>
@@ -1510,6 +1545,177 @@
                         <span>Experiencia personalizada</span>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Demo de Voz -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1 class="slide-title">🎙️ Demo de Voz: Naia por Teléfono</h1>
+                <p class="slide-subtitle">Escucha cómo suena Naia atendiendo una llamada</p>
+                
+                <div style="max-width: 700px; margin: 40px auto;">
+                    <!-- Interfaz de llamada -->
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 240, 232, 0.9)); padding: 50px; border-radius: 30px; box-shadow: 0 20px 60px rgba(173, 153, 120, 0.4); border: 3px solid rgba(173, 153, 120, 0.3);">
+                        
+                        <!-- Avatar Naia -->
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <div style="width: 100px; height: 100px; background: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #AD9978; font-size: 2em; font-weight: 900; box-shadow: 0 15px 40px rgba(173, 153, 120, 0.4); border: 3px solid #AD9978; animation: pulse-voice 2s ease-in-out infinite;" id="voiceAvatar">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <h3 style="color: #AD9978; margin-top: 20px; font-size: 1.5em; font-weight: 600;">Naia - Agente de Voz IA</h3>
+                            <p style="color: #5a5040; margin-top: 10px; font-size: 1.1em;" id="voiceStatus">Lista para atender tu llamada</p>
+                        </div>
+
+                        <!-- Botón de reproducir -->
+                        <div style="text-align: center; margin: 30px 0;">
+                            <button onclick="playVoiceDemo()" id="playVoiceBtn" style="background: linear-gradient(135deg, #AD9978, #8B7958); color: white; padding: 20px 45px; border: none; border-radius: 50px; font-size: 1.2em; font-weight: 700; cursor: pointer; box-shadow: 0 10px 30px rgba(173, 153, 120, 0.4); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-phone"></i>
+                                <span id="playBtnText">Iniciar Llamada de Ejemplo</span>
+                            </button>
+                        </div>
+
+                        <!-- Transcripción -->
+                        <div id="transcription" style="background: rgba(173, 153, 120, 0.1); padding: 25px; border-radius: 20px; margin-top: 30px; border-left: 4px solid #AD9978; display: none;">
+                            <div style="color: #5a5040; font-size: 1.1em; line-height: 1.7;" id="transcriptionText">
+                                <!-- Se llenará dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información adicional -->
+                    <div style="margin-top: 40px; text-align: center;">
+                        <div style="display: inline-flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+                            <div style="color: #5a5040;">
+                                <i class="fas fa-check-circle" style="color: #AD9978; font-size: 1.3em;"></i>
+                                <span style="margin-left: 8px; font-weight: 500;">Voz natural y fluida</span>
+                            </div>
+                            <div style="color: #5a5040;">
+                                <i class="fas fa-check-circle" style="color: #AD9978; font-size: 1.3em;"></i>
+                                <span style="margin-left: 8px; font-weight: 500;">Respuestas inteligentes</span>
+                            </div>
+                            <div style="color: #5a5040;">
+                                <i class="fas fa-check-circle" style="color: #AD9978; font-size: 1.3em;"></i>
+                                <span style="margin-left: 8px; font-weight: 500;">Disponible 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    @keyframes pulse-voice {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.05); box-shadow: 0 20px 50px rgba(173, 153, 120, 0.6); }
+                    }
+                    #playVoiceBtn:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 15px 40px rgba(173, 153, 120, 0.6);
+                    }
+                    .typing-indicator {
+                        display: inline-block;
+                        width: 8px;
+                        height: 8px;
+                        background: #AD9978;
+                        border-radius: 50%;
+                        margin: 0 3px;
+                        animation: typing-bounce 1.4s infinite;
+                    }
+                    .typing-indicator:nth-child(2) { animation-delay: 0.2s; }
+                    .typing-indicator:nth-child(3) { animation-delay: 0.4s; }
+                    @keyframes typing-bounce {
+                        0%, 60%, 100% { transform: translateY(0); }
+                        30% { transform: translateY(-10px); }
+                    }
+                </style>
+
+                <script>
+                    function playVoiceDemo() {
+                        const btn = document.getElementById('playVoiceBtn');
+                        const btnText = document.getElementById('playBtnText');
+                        const status = document.getElementById('voiceStatus');
+                        const transcription = document.getElementById('transcription');
+                        const transcriptionText = document.getElementById('transcriptionText');
+                        const avatar = document.getElementById('voiceAvatar');
+                        
+                        // Deshabilitar botón
+                        btn.disabled = true;
+                        btn.style.opacity = '0.7';
+                        btnText.textContent = 'Llamando...';
+                        
+                        // Simulación de conversación telefónica
+                        const conversation = [
+                            { speaker: 'system', text: '📞 Llamada conectada...', delay: 1000 },
+                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Hola, buenos días. Bienvenido a Hello Nails. Soy Naia, tu asistente virtual. ¿En qué puedo ayudarte?', delay: 2000 },
+                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> Hola, me gustaría reservar una cita para manicura gel.', delay: 3000 },
+                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Perfecto. La manicura gel tiene una duración de 60 minutos y un precio de 35 euros. ¿Qué día te vendría bien?', delay: 3000 },
+                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> El viernes por la tarde, si es posible.', delay: 2500 },
+                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Déjame revisar la disponibilidad... Tengo disponible el viernes a las 16:00, 17:30 o 19:00. ¿Cuál prefieres?', delay: 3000 },
+                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> A las 17:30 me viene genial.', delay: 2000 },
+                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Excelente. He reservado tu cita para el viernes a las 17:30 para manicura gel. ¿Podrías darme tu nombre y teléfono para confirmar?', delay: 3500 },
+                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> Sí, soy María García, mi teléfono es 612345678.', delay: 2500 },
+                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> Perfecto, María. Tu cita está confirmada. Te enviaré un recordatorio por WhatsApp el día anterior. ¿Necesitas algo más?', delay: 3500 },
+                            { speaker: 'client', text: '👤 <strong>Cliente:</strong> No, eso es todo. Muchas gracias.', delay: 2000 },
+                            { speaker: 'naia', text: '🗣️ <strong>Naia:</strong> ¡Gracias a ti, María! Nos vemos el viernes. Que tengas un excelente día.', delay: 3000 },
+                            { speaker: 'system', text: '✅ Llamada finalizada. Reserva confirmada exitosamente.', delay: 1500 }
+                        ];
+                        
+                        // Mostrar transcripción
+                        setTimeout(() => {
+                            status.textContent = 'En llamada...';
+                            avatar.innerHTML = '<i class="fas fa-phone-volume"></i>';
+                            transcription.style.display = 'block';
+                            transcriptionText.innerHTML = '';
+                            
+                            let currentIndex = 0;
+                            
+                            function showNextMessage() {
+                                if (currentIndex < conversation.length) {
+                                    const message = conversation[currentIndex];
+                                    
+                                    // Mostrar indicador de "escribiendo"
+                                    const typingIndicator = document.createElement('div');
+                                    typingIndicator.style.margin = '15px 0';
+                                    typingIndicator.innerHTML = '<span class="typing-indicator"></span><span class="typing-indicator"></span><span class="typing-indicator"></span>';
+                                    transcriptionText.appendChild(typingIndicator);
+                                    
+                                    setTimeout(() => {
+                                        typingIndicator.remove();
+                                        
+                                        const msgDiv = document.createElement('div');
+                                        msgDiv.style.margin = '15px 0';
+                                        msgDiv.style.padding = '10px 15px';
+                                        msgDiv.style.background = message.speaker === 'naia' ? 'rgba(173, 153, 120, 0.1)' : 
+                                                                 message.speaker === 'client' ? 'rgba(255, 255, 255, 0.8)' : 
+                                                                 'rgba(173, 153, 120, 0.05)';
+                                        msgDiv.style.borderRadius = '10px';
+                                        msgDiv.innerHTML = message.text;
+                                        transcriptionText.appendChild(msgDiv);
+                                        
+                                        // Auto-scroll
+                                        transcription.scrollTop = transcription.scrollHeight;
+                                        
+                                        currentIndex++;
+                                        
+                                        if (currentIndex < conversation.length) {
+                                            setTimeout(showNextMessage, message.delay);
+                                        } else {
+                                            // Finalizar
+                                            setTimeout(() => {
+                                                status.textContent = 'Llamada finalizada';
+                                                avatar.innerHTML = '<i class="fas fa-check-circle"></i>';
+                                                btn.disabled = false;
+                                                btn.style.opacity = '1';
+                                                btnText.textContent = 'Reproducir de Nuevo';
+                                            }, 1000);
+                                        }
+                                    }, 800);
+                                }
+                            }
+                            
+                            showNextMessage();
+                        }, 500);
+                    }
+                </script>
             </div>
         </div>
     </div>
